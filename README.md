@@ -2,13 +2,13 @@
 A Hexo Theme
 ================
 
-![](https://dn-xingoxu.qbox.me/github/hexo-theme-just-use-chrome-to-debug/Showcase-Template-Flat-Presentation.png)
+[![](https://dn-xingoxu.qbox.me/github/hexo-theme-just-use-chrome-to-debug/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-just-use-chrome-to-debug/archive/master.zip)
 
 [Yilia](https://github.com/litten/hexo-theme-yilia) 是为 [hexo](https://github.com/tommy351/hexo) 2.4+制作的主题。崇尚简约优雅，以及极致的性能。 
 
-本主题是在Yilia的基础上，对界面进行大幅改造，使其看起来更清爽，简单
-在功能上，对一些感觉好像并没有什么卵用的东西进行了屏蔽（暂时，会逐步剔除）
-在细节上，增加了一些动画，使得整个页面阅读区清晰，交互区有趣，并仍保持极致的性能
+本主题是在Yilia的基础上，对界面进行大幅改造，使其看起来更清爽，简单  
+在功能上，对一些感觉好像并没有什么卵用的东西进行了屏蔽（暂时，会逐步剔除）  
+在细节上，增加了一些动画，使得整个页面阅读区清晰，交互区有趣，并仍保持极致的性能  
   
 以上都是我瞎编的  
   
@@ -28,7 +28,7 @@ IE 11意料之外的nav按钮无效，会修复
 
 如果你想体验手机浏览效果，可以扫一下二维码：
 
-![litten-qrcode](https://cloud.githubusercontent.com/assets/2024949/6349328/51a067fe-bc64-11e4-881c-f68050c50c28.png)
+![xingoxu-qrcode](http://qr.api.cli.im/qr?data=https%253A%252F%252Fblog.xingoxu.com%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=019e019256aaccd74172cd2efa33e135)
 
 —————————————————————
 
