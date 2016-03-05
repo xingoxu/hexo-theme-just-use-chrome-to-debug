@@ -34,7 +34,7 @@ define([], function(){
 		$tag = document.getElementById("js-tagcloud");
 		$aboutme = document.getElementById("js-aboutme");
 		$friends = document.getElementById("js-friends");
-		var tagStr = $tag?'<span class="viewer-title">标签</span><div class="viewer-div tagcloud" id="js-mobile-tagcloud"></div>':"";
+		var tagStr = $tag?'<span class="viewer-title-tag">标签</span><div class="viewer-div-tagcloud" id="js-mobile-tagcloud"></div>':"";
 		var friendsStr = $friends?'<span class="viewer-title">友情链接</span><div class="viewer-div friends" id="js-mobile-friends"></div>':"";
 		var aboutmeStr = $aboutme?'<span class="viewer-title">关于我</span><div class="viewer-div aboutme" id="js-mobile-aboutme"></div>':"";
 
@@ -148,7 +148,7 @@ define([], function(){
 			renderDOM();
 			combine();
 			bindDOM();
-			resetTags();
+			/*resetTags();*/
 		}
 	}
 })

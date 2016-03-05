@@ -1,100 +1,122 @@
-define([], function(){
+define([], function() {
 
-	var Tips = (function(){
+	var Tips = (function() {
 
 		var $tipBox = $(".tips-box");
+		var $tipsInner = $tipBox.children(".tips-inner");
+		$tipBox.show();
+		var tipBoxHeight = $tipsInner.css("height");
+		$tipsInner.hide();
+		$tipBox.removeClass("hide");
 
 		return {
-			show: function(){
-				$tipBox.removeClass("hide");
+			show: function(idx) {
+				var standardLinePx = 20 + 6;
+				var paddingValue = '8px 0';
+				var topMovePx = 24 + idx * 48 + 8;
+
+				$tipsInner.css("top", -standardLinePx)
+					.css("padding", "0")
+					.css("height", "0")
+					.show();
+				$tipsInner.animate({
+					top: -(standardLinePx + topMovePx),
+					padding: paddingValue,
+					height: tipBoxHeight
+				}, 200);
+
 			},
-			hide: function(){
-				$tipBox.addClass("hide");
+			hide: function() {
+				$tipsInner.fadeOut(300);
 			},
-			init: function(){
-				
+			init: function() {
+
 			}
-		}
+		};
 	})();
 
-	var resetTags = function(){
+	var resetTags = function() {
 		var tags = $(".tagcloud a");
-		tags.css({"font-size": "12px"});
-		for(var i=0,len=tags.length; i<len; i++){
-			var num = tags.eq(i).html().length % 5 +1;
+		tags.css({
+			"font-size": "12px"
+		});
+		for (var i = 0, len = tags.length; i < len; i++) {
+			var num = tags.eq(i).html().length % 5 + 1;
 			tags[i].className = "";
-			tags.eq(i).addClass("color"+num);
+			tags.eq(i).addClass("color" + num);
 		}
-	}
+	};
 
-	var slide = function(idx){
+	var slide = function(idx) {
 		var $wrap = $(".switch-wrap");
 		$wrap.css({
-			"transform": "translate(-"+idx*100+"%, 0 )"
+			"transform": "translate(-" + idx * 100 + "%, 0 )"
 		});
 		$(".icon-wrap").addClass("hide");
 		$(".icon-wrap").eq(idx).removeClass("hide");
-	}
+	};
 
-	var bind = function(){
-		var switchBtn = $("#myonoffswitch");
-		var tagcloud = $(".second-part");
-		var navDiv = $(".first-part");
-		switchBtn.click(function(){
-			if(switchBtn.hasClass("clicked")){
-				switchBtn.removeClass("clicked");
-				tagcloud.removeClass("turn-left");
-				navDiv.removeClass("turn-left");
-			}else{
-				switchBtn.addClass("clicked");
-				tagcloud.addClass("turn-left");
-				navDiv.addClass("turn-left");
-				resetTags();
-			}
-		});
+	var bind = function() {
 
-		var timeout;
-		var isEnterBtn = false;
-		var isEnterTips = false;
+		var timeout = 5000; //5秒后关闭
+		var taskid = 0;
+		var idx = 0;
 
-		$(".icon").bind("mouseenter", function(){
-			isEnterBtn = true;
-			Tips.show();
-		}).bind("mouseleave", function(){
-			isEnterBtn = false;
-			setTimeout(function(){
-				if(!isEnterTips){
-					Tips.hide();
-				}
-			}, 100);
-		});
-
-		$(".tips-box").bind("mouseenter", function(){
-			isEnterTips = true;
-			Tips.show();
-		}).bind("mouseleave", function(){
-			isEnterTips = false;
-			setTimeout(function(){
-				if(!isEnterBtn){
-					Tips.hide();
-				}
-			}, 100);
-		});
-
-		$(".tips-inner li").bind("click", function(){
-			var idx = $(this).index();
+		$(".tips-inner li").bind("click", function() {
+			idx = $(this).index();
 			slide(idx);
 			Tips.hide();
+			return false;
 		});
-	}
 
-	
+		$('body').click(function() {
+			Tips.hide();
+		});
+
+		$(".icon").click(function() {
+			Tips.show(idx);
+			return false;
+		});
+
+		$(".tips-box").bind("mouseenter", function() {
+			clearTimeout(taskid);
+		}).bind("mouseleave", function() {
+			taskid = setTimeout(function() { //todo
+				Tips.hide();
+			}, timeout);
+		});
+
+
+		/*$(".icon").bind("mouseenter", function() {
+			isEnterBtn = true;
+			Tips.show();
+		}).bind("mouseleave", function() {
+			isEnterBtn = false;
+			setTimeout(function() {
+				if (!isEnterTips) {
+					Tips.hide();
+				}
+			}, 100);
+		});*/
+
+
+
+	};
+
+	var setColumn = function() {
+		var $switchPart1 = $('section.switch-part1');
+		$switchPart1.siblings().css("left", function(index) {
+			return (index + 1) * 100 + '%';
+		});
+
+	};
 
 	return {
-		init: function(){
-			resetTags();
+		init: function() {
+			/*resetTags();*/
 			bind();
+			setColumn();
 			Tips.init();
 		}
-	}
+	};
 });

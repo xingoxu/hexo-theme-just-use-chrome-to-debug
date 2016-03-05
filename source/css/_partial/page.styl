@@ -1,35 +1,44 @@
 #page-nav{
 	text-align: center;
 	margin-top: 30px;
+    transition: 0.4s ease-in-out;
 	.page-number{
-		width: 20px;
-		height: 20px;
-		background: #4d4d4d;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-		border-radius: 50%;
 		display: inline-block;
-		color: #fff;
-		line-height: 20px;
-		font-size: 12px;
-		margin: 0 3px 30px;
+    	line-height: 34px;
+    	padding: 0 1em;
+    	margin: 0 2px;
+    	font-size: 14px;
+    	color: #727272;
+    	border-radius: 3px;
+    	overflow: hidden;
+    	transition: 0.4s ease-in-out;
 		&:hover{
-			background: #5e5e5e;
+			color: #4184f3;
+    		background: #dadada;
 		}
 	}
 	.current{
-		background: #88acdb;
+		background: #4184f3;
+		color: white;
 		cursor: default;
 		&:hover{
-			background: #88acdb;
+			color: white;
+			background: #4184f3;
 		}
 	}
 	.extend{
-		color: #4d4d4d;
-		margin: 0 27px;
-		opacity: 0;
+		display: inline-block;
+    	line-height: 34px;
+    	padding: 0 1em;
+    	margin: 0 2px;
+    	font-size: 14px;
+    	color: #727272;
+    	border-radius: 3px;
+    	overflow: hidden;
+    	transition: 0.4s ease-in-out;
 		&:hover{
-			color: #5e5e5e;
+			color: #4184f3;
+    		background: #dadada;
 		}
 	}
 	&:hover{

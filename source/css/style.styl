@@ -3,10 +3,12 @@
 @import "_util/mixin"
 @import "_util/grid"
 
+@import "fonts"
+
 @font-face {
   font-family:'FontAwesome';
   src:url("fonts/fontawesome-webfont.eot");
-  src:url("fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/fontawesome-webfont.woff") format("woff"),url("fonts/fontawesome-webfont.ttf") format("truetype"),url("fonts/fontawesome-webfont.svgz#FontAwesomeRegular") format("svg"),url("fonts/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");
+  src:url("fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/fontawesome-webfont.woff") format("woff"),url("fonts/fontawesome-webfont.ttf") format("truetype"),url("fonts/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");
   font-weight:normal;
   font-style:normal
 }
@@ -41,17 +43,23 @@ html, body, #container
   height: 100%
 
 body
-  font-family: "微软雅黑","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Roboto,"Roboto","微软雅黑",Microsoft Yahei,"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:16px;
-  background:#fff;
+  /*background:#fff;*/
+  background: #eeeeee;
   color: rgba(0,0,0,0.6);
   -webkit-overflow-scrolling: touch
+  /*background: url(https://dn-xingoxu.qbox.me/background.jpg) fixed;*/
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  line-height: normal !important;
 
 h1,h2,h3{
   display: block;
 }
 h1 {
-  font-size:1.5em
+  font-size:1.4em
 }
 h2 {
   font-size:1.3em
@@ -68,6 +76,7 @@ a {
   outline-width:0;
   color:#258fb8;
   outline: none;
+  word-break: break-word;
 }
 
 .alignleft {
@@ -108,7 +117,7 @@ a {
 @import "_partial/page"
 @import "_partial/instagram"
 @import "_partial/tagcloud"
-@import "_partial/scroll"
+/*@import "_partial/scroll"*/
 @import "_partial/mobile-slider"
 
 if sidebar

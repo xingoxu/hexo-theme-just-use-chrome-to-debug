@@ -1,8 +1,8 @@
-.left-col {
+.right-col {
     display: none;
 }
 .mid-col {
-    left: 0;
+    right: 0;
 }
 #header{
     .header-nav{
@@ -12,7 +12,7 @@
 .header-author{
     &.fixed{
         position: fixed;
-        top: -13px;
+        top: -0.3em; /*13px*/
         width: 100%;
         color: #ddd;
     }
@@ -43,9 +43,9 @@
 .article-header{
     border-left: none;
     padding: 0;
-    border-bottom: 1px dotted #ddd;
+    /*border-bottom: 1px dotted #ddd;*/
     h1{
-        margin-bottom: 10px;
+        margin-bottom: 16px;
     }
 }
 .header-subtitle{
@@ -77,19 +77,20 @@
     .article-entry{
         padding-left: 0;
         padding-right: 0;
-        padding-top: 10px;
+        /*padding-top: 16px;*/
+        margin-top: 0;
     }
     .article-title{
         font-size: 18px;
-        max-width: 185px;
+        /*max-width: 185px;*/
         display: block;
         margin: 0;
     }
     .article-meta{
         width: auto;
         height: 30px;
-        margin-top: -5px;
-        position: ralative;
+        /*margin-top: -5px;*/
+        position: relative;
         .article-date{
             font-size: 12px;
             border-radius: 0;
