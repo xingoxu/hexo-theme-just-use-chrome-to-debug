@@ -24,9 +24,19 @@
 			</nav>
 			<nav class="header-nav">
 				<div class="social">
-					<% for (var i in theme.subnav){ %>
-						<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><%= i %></a>
-			        <%}%>
+					<% for (var i in theme.subnav){ %><a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>">
+						<% if (i=='mail') { %>
+							<i class="fa fa-envelope-o"></i>
+						<% } else if (i=='linkedin') { %>
+							<i class="fa fa-linkedin-square"></i>
+						<% } else if (i=='google') { %>
+							<i class="fa fa-google-plus"></i>
+						<% } else if (i=='facebook') { %>
+							<i class="fa fa-facebook-official"></i>
+						<% } else { %>
+							<i class="fa fa-<%= i %>"></i>
+						<% } %>
+					</a><% } %>
 				</div>
 			</nav>
 		</header>				

@@ -3,6 +3,7 @@
     <%- partial('article', {post: post, index: true}) %>
   <% }) %>
   <% if (page.total > 1){ %>
+    <%- partial('loading-circle') %>
     <nav id="page-nav">
       <%- paginator({
         prev_text: '&laquo; Prev',

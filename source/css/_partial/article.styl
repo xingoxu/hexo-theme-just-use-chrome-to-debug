@@ -6,19 +6,19 @@
   margin: 24px 40px 24px;
   padding: 32px;
   position: relative;
-  border: 1px solid rgba(0,0,0,0);
+  /*border: 1px solid rgba(0,0,0,0);*/
   border-radius: 2px;
   /*#ddd;*/
   /*background: #fff;*/
   background: #fefefe;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
   &.show{
     visibility: visible;
-    -webkit-animation: cd-bounce-1 0.6s;
-    -moz-animation: cd-bounce-1 0.6s;
-    animation: cd-bounce-1 0.6s;
+    -webkit-animation: transup 0.6s ease-in-out;
+    -moz-animation: transup 0.6s ease-in-out;
+    animation: transup 0.6s ease-in-out;
   }
   &.hidden{
     visibility: hidden;
@@ -34,13 +34,49 @@
 	float: left;
 	margin-right: 10px;
   }
+  .index-progress{
+  	position: absolute;
+  	bottom: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 0px;
+  	overflow: hidden;
+  	background:	rgba(65,132,243,0.35);
+  	transition: inherit;
+  	.progress-bar-indeterminate{
+  		background: rgb(65,132,243);
+  		transition: inherit;
+  		&:before{
+  			content: "";
+  			background: inherit;
+  			position: absolute;
+  			display: block;
+  			animation: pbar-indeterminate-one 2.1s linear infinite;
+  			transition: width .3s ease-in;
+  			will-change: left,width;
+  			top: 0;
+  			left: 0;
+  			height: 100%;
+  			transition: inherit;
+  		}
+  		&:after{
+  			content: "";
+  			background: inherit;
+  			position: absolute;
+  			display: block;
+  			animation: pbar-indeterminate-two 2.1s linear infinite;
+  			transition: width .3s ease-in;
+  			will-change: left,width;
+  			top: 0;
+  			left: 0;
+  			height: 100%;
+  			transition: inherit;
+  		}
+  	}
+
+  }
 }
-.article:hover{
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-.article:hover .article-header{
-  /*border-left:5px solid rgba(3,131,135,1);*/
-}
+
 @-webkit-keyframes cd-bounce-1 {
   0% {
     opacity: 0;
@@ -92,6 +128,157 @@
     transform: scale(1);
   }
 }
+@-webkit-keyframes transup {
+    from {
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    to {
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+@-moz-keyframes transup {
+    from {
+        -moz-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    to {
+        -moz-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes transup {
+    from {
+        -moz-transform: translate3d(0,100%,0);
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    to {
+        -moz-transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+@-moz-keyframes pbar-indeterminate-one{
+	0% {
+        left: 0;
+        width: 0
+    }
+
+    45% {
+        left: 30%;
+        width: 70%
+    }
+
+    75% {
+        left: 100%;
+        width: 0
+    }
+    100%{
+        left: 100%;
+        width: 0
+    }
+}
+
+@-webkit-keyframes pbar-indeterminate-one {
+    0% {
+        left: 0;
+        width: 0
+    }
+
+    45% {
+        left: 30%;
+        width: 70%
+    }
+
+    75% {
+        left: 100%;
+        width: 0
+    }
+    100%{
+        left: 100%;
+        width: 0
+    }
+}
+
+@keyframes pbar-indeterminate-one {
+    0% {
+        left: 0;
+        width: 0
+    }
+
+    45% {
+        left: 30%;
+        width: 70%
+    }
+
+    75% {
+        left: 100%;
+        width: 0
+    }
+    100%{
+        left: 100%;
+        width: 0
+    }
+}
+
+@-moz-keyframes pbar-indeterminate-two{
+	0%,45% {
+        left: 0;
+        width: 0
+    }
+
+    75% {
+        left: 0;
+        width: 70%
+    }
+
+    100% {
+        left: 100%;
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes pbar-indeterminate-two {
+    0%,45% {
+        left: 0;
+        width: 0
+    }
+
+    75% {
+        left: 0;
+        width: 70%
+    }
+
+    100% {
+        left: 100%;
+        width: 100%;
+    }
+}
+
+@keyframes pbar-indeterminate-two {
+    0%,45% {
+        left: 0;
+        width: 0
+    }
+
+    75% {
+        left: 0;
+        width: 70%
+    }
+
+    100% {
+        left: 100%;
+        width: 100%;
+    }
+}
+
 .article-index{
   margin-left: 200px;
   padding: 15px 0;
@@ -365,8 +552,8 @@ a.article-title{
 #article-nav{
   margin: 80px 0 30px 0;
   padding-bottom: 10px;
+  font-size: 0;
   .article-nav-link-wrap{
-    margin: 0px 30px 0px 30px;
     font-size: 14px;
     line-height: 14px;
     color: #333;

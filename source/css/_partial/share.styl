@@ -1,14 +1,132 @@
-.share {
-	padding: 0px 75px 30px 40px;
-	margin-bottom: 15px;
+.article-share{
+	font-size: 0;
+	text-align: right;
+	.share-icon{
+		position: relative;	
+		font: 18px FontAwesome;
+		display: inline-block;
+		line-height: 1.8em;
+		width: 1.8em;
+		text-align: center;
+		padding: 0 2px;
+		&:before{
+
+		}
+		&:after{
+			content: "";
+			position: absolute;
+			height: 4px;
+			left: 50%;
+			right: 50%;
+			bottom: 0;
+			transition: .3s all ease-in-out;
+		}
+		&:hover:after{
+				left: 0;
+				right: 0;
+		}
+	}
+	span.share-icon:before{
+		color: #CFD1D4;
+		content: "\f064";
+	}
+	.share-wechat{
+		&:before{
+			content: "\f1d7";
+			color: #00D400;
+		}
+		&:after{
+			background: #00D400;
+		}
+	}
+	.share-weibo{
+		&:before{
+			content: "\f18a";
+    		color: #E6162D;
+		}
+		&:after{
+    		background: #E6162D;
+		}
+	}
+	.share-twitter{
+		&:before{
+			content: "\f099";
+    		color: #1DA1F2;
+		}
+		&:after{
+    		background: #1DA1F2;
+		}
+	}
+	.share-google{
+		&:before{
+			content: "\f0d5";
+    		color: #c83d20;
+		}
+		&:after{
+    		background: #c83d20;
+		}
+	}
+	.share-qq{
+		&:before{
+			content: "\f1d6";
+    		color: #169ADA;
+		}
+		&:after{
+    		background: #169ADA;
+		}
+	}
+	.share-facebook{
+		&:before{
+			content: "\f230";
+    		color: #3b5998;
+		}
+		&:after{
+    		background: #3b5998;
+		}
+	}
 }
-.back_home{
-	float: right;
+.body-mask{
+	display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background: rgba(0,0,0,.5);
 }
-.back_home a{
-	font-weight: bold;
-	margin-left: 10px;
-}
-.back_home a:hover{
-	color: #6e6e6e;
+
+.qrcode-module{
+	position: fixed;
+    width: 260px;
+    height: 281px;
+    
+    left: calc(50% - 154px);
+    top: 100%;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.4);
+    background: #fff;
+    border-radius: 4px;
+    z-index: 999;
+    padding: 24px;
+	transition: .3s top;
+	&.show{
+		top: calc(50% - 165px);
+	}
+	h2 {
+		padding-bottom: 16px;
+		font-size: 1.2em;
+	}
+	#qrcode-pic{
+		margin: 0 auto;
+    	position: relative;
+    	display: block;
+	}
+	#logo-qrcode{
+    	width: 50px;
+    	position: absolute;
+    	left: 129px;
+    	bottom: 119px;
+    	border-radius: 6px;
+	}
+	
 }

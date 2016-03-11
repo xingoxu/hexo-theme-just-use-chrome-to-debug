@@ -13,8 +13,12 @@
         <%- partial('_partial/right-col', {item: page, table: false}, {cache: !config.relative_link}) %>
       <% } %>
     </div>
-    <%- partial('_partial/after-footer') %>
   </div>
-  <script type="text/javascript" async src="/js/jquery.totop.js"></script>
+  <% if (page.layout=='post' || page.layout=='photo'){ %>
+    <%- partial('_partial/mobile-slider', {item: page, table: true}) %>
+  <% } else { %>
+    <%- partial('_partial/mobile-slider', {item: page, table: false}) %>
+  <% } %>
+  <%- partial('_partial/after-footer') %>
 </body>
 </html>

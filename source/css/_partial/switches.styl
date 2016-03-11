@@ -1,0 +1,56 @@
+/*switch css from http://daemonite.github.io/material/ui-selection-control.html*/
+input[type=checkbox]:checked+.switch-toggle, input[type=radio]:checked+.switch-toggle {
+    background-color: rgba(65,132,243,.5);
+}
+
+
+.switch-toggle {
+    background-color: rgba(0,0,0,.38);
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    height: 12px;
+    margin-right: 8px;
+    transition: background-color .3s cubic-bezier(.4,0,.2,1);
+    vertical-align: middle;
+    width: 32.5px;
+    margin-left: 50px;
+}
+.form-group-label, .switch, .switch-toggle {
+    position: relative;
+}
+.access-hide{
+    display:none;
+}
+input[type=checkbox]:checked+.switch-toggle:after, input[type=radio]:checked+.switch-toggle:after {
+    background-color: #4184f3;
+    left: 12.5px;
+}
+.switch-toggle:after {
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    transition: background-color .3s cubic-bezier(.4,0,.2,1),box-shadow 90ms cubic-bezier(.4,0,.2,1),left .3s cubic-bezier(.4,0,.2,1);
+    width: 20px;
+}
+.switch-toggle:active:after {
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.25),0 0 0 12.5px rgba(0,0,0,.1);
+}
+input[type=checkbox]:checked+.switch-toggle,input[type=radio]:checked+.switch-toggle {
+    background-color: rgba(65,132,243,.5);
+}
+
+input[type=checkbox]:checked+.switch-toggle:after,input[type=radio]:checked+.switch-toggle:after {
+    background-color: #4184f3;
+    left: 12.5px;
+}
+
+input[type=checkbox]:checked+.switch-toggle:active:after,input[type=radio]:checked+.switch-toggle:active:after {
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.25),0 0 0 12.5px rgba(65,132,243,.5);
+}

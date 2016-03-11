@@ -1,14 +1,14 @@
 /**
  * @author xingo
- * @date 2016-03-05 version 0.2
- * @description 回顶部 回原地
- * @update 适配新主题
+ * @date 2016-03-05 version 0.3
+ * @description 回顶部 回原位置
+ * @update 使用require写法
  */
-(function($) {
+define([], function() {
 
     // When to show the scroll link
     // higher number = scroll link appears further down the page    
-    var upperLimit = 500;
+    var upperLimit = 700;
 
     // Scroll to top time
     var toTopTime = 500;
@@ -80,4 +80,8 @@
         }
     );
 
-})(jQuery);
+    return {
+        init: function() {}
+    };
+
+});

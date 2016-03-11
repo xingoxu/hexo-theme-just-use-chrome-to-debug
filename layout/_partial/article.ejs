@@ -48,31 +48,20 @@
   <% if (!index){ %>
     <%- partial('post/nav') %>
   <% } %>
-  
-  <% if (!index && theme.duoshuo && post.comments){ %>
-    <div class="ds-share flat" data-thread-key="<%=post.slug%>" data-title="<%=post.title%>" data-images="<%=config.url+url_for(post.path)%>" data-content data-url="<%=config.url+url_for(post.path)%>" style="padding-left: 30px;">
-      <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">        
-        <li>分享到：</li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>  
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-twitter" href="javascript:void(0);" data-service="twitter">Twitter</a></li>
-        <li><a class="ds-google" href="javascript:void(0);" data-service="google">Google+</a></li>
-        <li><a class="ds-qq" href="javascript:void(0);" data-service="qq">QQ</a></li>
-        <li><a class="ds-facebook" href="javascript:void(0);" data-service="facebook">Facebook</a></li>
-      </ul>
-      <div class="ds-share-icons-more"></div>
-      </div>
+  <% if (index){ %>
+    <div class="index-progress">
+      <div class="progress-bar-indeterminate"></div>
     </div>
-    <br />
+  <% } %>
+  
+  <% if (!index && theme.share){ %>
+    <%- partial('post/share',{post:post}) %>
   <% } %>
 </article>
 
-<% if (!index && theme.share){ %>
-<%- partial('post/share') %>
-<% } %>
 
-<% if (!index && theme.duoshuo && post.comments){ %>
+
+<% if (!index && theme.duoshuo && post.comments && post.slug){ %>
 <%- partial('post/duoshuo', {
     key: post.slug,
     title: post.title,

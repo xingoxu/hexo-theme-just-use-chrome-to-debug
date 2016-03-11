@@ -47,24 +47,25 @@ define([], function() {
 		}
 	};
 
+	//bind & slide use this index
+	var index = 0;
+
 	var slide = function(idx) {
 		var $wrap = $(".switch-wrap");
-		$wrap.css({
-			"transform": "translate(-" + idx * 100 + "%, 0 )"
-		});
+		$wrap.css("transform", "translate(-" + (idx * 100) + "%,0)");
 		$(".icon-wrap").addClass("hide");
 		$(".icon-wrap").eq(idx).removeClass("hide");
+		index = idx;
 	};
 
 	var bind = function() {
 
 		var timeout = 5000; //5秒后关闭
 		var taskid = 0;
-		var idx = 0;
 
 		$(".tips-inner li").bind("click", function() {
-			idx = $(this).index();
-			slide(idx);
+			index = $(this).index();
+			slide(index);
 			Tips.hide();
 			return false;
 		});
@@ -74,7 +75,7 @@ define([], function() {
 		});
 
 		$(".icon").click(function() {
-			Tips.show(idx);
+			Tips.show(index);
 			return false;
 		});
 
@@ -117,6 +118,7 @@ define([], function() {
 			bind();
 			setColumn();
 			Tips.init();
-		}
+		},
+		slide: slide
 	};
 });

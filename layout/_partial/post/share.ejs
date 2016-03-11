@@ -1,14 +1,9 @@
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
+<div data-url="<%- post.permalink %>" data-title="<% if (post.title){ %>「<%= post.title %>」 | <% } %><%= config.title %>" data-tsina="<%= theme.shareid.tsina %>" data-image="<%= post.titleimage %>" duoshuo-id="<%=theme.duoshuo%>" favicon="<%- config.url+url_for(theme.favicon ) %>" class="article-share">
+		<span class="share-icon" title="分享到"></span>
+		<a class="share-icon share-wechat" href="javascript:;"></a>
+		<a target="_blank" class="share-icon share-weibo"></a>
+		<a target="_blank" class="share-icon share-twitter"></a>
+		<a target="_blank" class="share-icon share-google"></a>
+		<a target="_blank" class="share-icon share-qq"></a>
+		<a target="_blank" class="share-icon share-facebook"></a>
 </div>

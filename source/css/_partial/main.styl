@@ -10,15 +10,16 @@
 			/*background: #4d4d4d;*/
 			background-image: url(overlay-pic);
 			background-size: cover;
-			background-position: top;
+			background-position: top center;
 			&.fixed{
+        		box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 		        position: fixed;
 		        height: 42px;
 		        z-index: 99;
 		    }
 		}
 		#header{
-			padding: 10px 0 0 0;
+			padding: 45px 0 0 0;
 			.profilepic{
 				display: block;
 				position: relative;
@@ -53,10 +54,21 @@
 				li{
 					display: inline-block;
 					margin: 3px;
+					&:before{
+						transition: height 0s ease-in-out;
+						width: 100%;
+						height: 0;
+						bottom: 0;
+					}
+					&:hover:before{
+						height: 4px;
+					}
 				}
 			}
 			.social{
-				display: none;
+				background: none;
+				position: relative;
+				text-align: center;
 			}
 		}
 	}
@@ -135,7 +147,8 @@
 			border: 5px solid #fff;
 			border-radius: 100%;
 			width: 42.67%;
-			/*height: 128px;*/
+			height: 0;
+			padding-top: 42.67%;
 			margin: 0 auto;
 			position: relative;
 			overflow: hidden;
@@ -146,11 +159,14 @@
 			-webkit-box-pack: center;
 			-webkit-box-align: center;
 			img{
-				width: 20%;
-				height: 20%;
+				// width: 100%;
+				// height: 100%;
 				border-radius: 100%;
 				display:block;
 				opacity: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
 				-webkit-transition: all 0.2s ease-in;
 				&.show{
 					width: 100%;
@@ -164,104 +180,7 @@
 			margin: -webkit-calc((45% - 40px - 37px - 25px)/2) 0;
 			margin: calc((45% - 40px - 37px - 25px)/2) 0;
 		}
-		.social{
-    		/*margin-top: 1.67em;*/
-			height: 40px;
-    		line-height: 40px;
-    		background: #f1f1f1;
-    		font-size: 0px;
-    		position: absolute;
-    		bottom: 0;
-    		width: 100%;
-    		a {
-    			position: relative;
-    			padding: 0 3%;
-    			width: 18px;
-    			font-size: 18px;
-    			display: inline-block;
-    			&:before{
-    				content: "";
-    				transition: height .25s ease-in-out;
-    				display: block;
-    				position: absolute;
-    				height: 0px;
-    				width: 100%;
-    				left: 0;
-    				bottom: 0;
-    				background: #005a87;
-    			}
-    			&:hover{
-    				&:before{
-    					height: 5px;
-    				}
-    			}
-    		}
-    		a.bangumi{
-    			background: url('https://bgm.tv/img/favicon.ico') center no-repeat;
-    			&:before{
-    				background: #FE8A95;
-    			}
-    		}
-    		a.weibo{
-    			color: #E6162D;
-    			&:before{
-    				background: #E6162D;
-    			}
-    		}
-    		a.twitter{
-    			color: #1DA1F2;
-    			&:before{
-    				background: #1DA1F2;
-    			}
-    		}
-    		a.rss {
-				color: #ef7522;
-				&:before{
-    				background: #ef7522;
-    			}
-			}
-			a.github {
-				color: #afb6ca;
-				&:before{
-    				background: #afb6ca;
-    			}
-			}
-			a.facebook {
-				color: #3b5998;
-				&:before{
-    				background: #3b5998;
-    			}
-			}
-			a.google {
-				color: #c83d20;
-				&:before{
-    				background: #c83d20;
-    			}
-			}
-			a.linkedin {
-				color: #005a87;
-				&:before{
-    				background: #005a87;
-    			}
-			}
-			a.zhihu {
-				background:url('/img/zhihu.png') center no-repeat;
-				&:before{
-    			}
-			}
-			a.douban {
-				background:url('/img/douban.png') center no-repeat;
-				&:before{
-    			}
-			}
-			a.mail {
-				color: #005a87;
-				&:before{
-    				background: #005a87;
-    			}
-			}
-    		
-		}
+		
 	}
 	.header-subtitle{
 		text-align: center;
@@ -293,8 +212,8 @@
 			padding: 0 15px;
 			
 			a{
-				font-size: 14px;
-				min-width: 300px;
+				width: 100%;
+				display: inline-block;
     			transition: all .1s ease-in-out;
 			}
 			&:before{
@@ -310,6 +229,14 @@
 			&:hover{
 				&:before{
 					width: 4px;
+				}
+			}
+			label {
+				color: #404040;
+				overflow: visible;
+				cursor: pointer;
+				&:hover{
+					color: #4184f3;
 				}
 			}			
 		}
@@ -344,9 +271,11 @@
 		position: absolute;
 		max-height: 100%;
     	overflow: auto;
+    	height: 100%;
 	}
 	.switch-part1{
 		left: 0;
+		
 	}
 	.switch-part2{
 		left: 100%;
@@ -359,6 +288,10 @@
 		left: 200%;
 		line-height: 30px;
 		text-align: left;
+		a {
+			display: inline-block;
+			width: 100%;
+		}
 		ol{
 			list-style: none;
 		}
@@ -374,7 +307,7 @@
 			display: block;
 			padding: 0 15px;
 			line-height: 30px;
-			
+			position: relative;
 
 			&:hover{
 				/*background: #88acdb;
@@ -402,6 +335,104 @@
 		line-height: 30px;
 	}
 }
+#header .social,#header-nav .social{
+   	/*margin-top: 1.67em;*/
+	height: 40px;
+   	line-height: 40px;
+   	background: #f1f1f1;
+   	font-size: 0px;
+   	position: absolute;
+   	bottom: 0;
+   	width: 100%;
+   	a {
+   		position: relative;
+   		padding: 0 3%;
+   		width: 18px;
+   		font-size: 18px;
+   		display: inline-block;
+   		&:before{
+   			content: "";
+   			transition: height .25s ease-in-out;
+   			display: block;
+   			position: absolute;
+   			height: 0px;
+   			width: 100%;
+   			left: 0;
+   			bottom: 0;
+   			background: #005a87;
+   		}
+   		&:hover{
+   			&:before{
+   				height: 5px;
+   			}
+   		}
+   	}
+   	a.bangumi{
+   		background: url('https://bgm.tv/img/favicon.ico') center no-repeat;
+   		&:before{
+   			background: #FE8A95;
+   		}
+   	}
+   	a.weibo{
+   		color: #E6162D;
+   		&:before{
+   			background: #E6162D;
+   		}
+   	}
+   	a.twitter{
+   		color: #1DA1F2;
+   		&:before{
+   			background: #1DA1F2;
+   		}
+   	}
+   	a.rss {
+		color: #ef7522;
+		&:before{
+   			background: #ef7522;
+   		}
+	}
+	a.github {
+		color: #afb6ca;
+		&:before{
+   			background: #afb6ca;
+   		}
+	}
+	a.facebook {
+		color: #3b5998;
+		&:before{
+   			background: #3b5998;
+   		}
+	}
+	a.google {
+		color: #c83d20;
+		&:before{
+   			background: #c83d20;
+   		}
+	}
+	a.linkedin {
+		color: #005a87;
+		&:before{
+   			background: #005a87;
+   		}
+	}
+	a.zhihu {
+		background:url('/img/zhihu.png') center no-repeat;
+		&:before{
+   		}
+	}
+	a.douban {
+		background:url('/img/douban.png') center no-repeat;
+		&:before{
+   		}
+	}
+	a.mail {
+		color: #005a87;
+		&:before{
+   			background: #005a87;
+   		}
+	}
+   	
+}
 #totop{
     font-size: 20px;
     transition: 0.3s;
@@ -413,6 +444,40 @@
     	}
     }
 }
+
+.ripple{
+	/*消失的ripple*/
+	position: absolute;
+	opacity: 0;
+	transform: scale(2);
+	transition: opacity 750ms;
+	background: rgba(0,0,0,.15);
+	border-radius: 100%;
+	&.ripple-selecting{
+		/*正在按下的ripple*/
+		opacity: 1;
+		animation: ripple 750ms ease-out;	
+	}
+}
+
+@keyframes ripple-disapper {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ripple{
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(2);
+	}
+}
+
+
 .duoshuo{
 	padding: 0 40px;
 }

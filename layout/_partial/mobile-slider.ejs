@@ -1,0 +1,49 @@
+<div id="viewer">
+    <div id="viewer-box">
+        <div class="viewer-box-l">
+        	<% if(item.toc !== false && table) { %>
+				<div class="viewer-box-wrap">
+					<span class="viewer-title">文章目录</span>
+					<div id="toc-mobile" class="toc-article viewer-div">
+						<%- toc(item.content,{list_number:false}) %>
+					</div>
+				</div>
+			<% } %>
+			<div class="viewer-box-wrap">
+				<span class="viewer-title">导航</span>
+				<div class="viewer-div">
+					<% for (var i in theme.menu) { %>
+						<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+					<% } %>
+				</div>
+			</div>
+			<% if (theme.aboutme) { %>
+				<div class="viewer-box-wrap">
+					<span class="viewer-title">关于我</span>
+					<div id="js-aboutme"><%= theme.aboutme %></div>
+				</div>
+			<%}%>
+			<% if (theme.friends && theme.friends.length != 0) { %>
+				<div class="viewer-box-wrap">
+					<span class="viewer-title">朋友们</span>
+					<div class="viewer-div friends" id="js-mobile-friends">
+						<% for (var i in theme.friends){ %>
+			         		<li><a target="_blank" class="main-navlink switch-friends-link" href="<%-url_for(theme.friends[i]) %>"><%= i %></a></li>
+			       		<% } %>
+			       	</div>
+				</div>
+			<%}%>
+			<% if(!table) { %>
+				<div class="viewer-box-wrap">
+					<div class="viewer-title">
+    					<label for="ajax-switch-mobile" class="ajax-checkbox">
+        							<input class="access-hide" disabled id="ajax-switch-mobile" name="auto-load" type="checkbox" />开启首页自加载<span class="switch-toggle"	></span>
+    					</label>
+    				</div>
+				</div>
+			<% } %>
+        </div>
+        <div class="viewer-box-r">
+        </div>
+    </div>
+</div>

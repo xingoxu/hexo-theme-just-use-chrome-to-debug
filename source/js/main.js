@@ -1,110 +1,208 @@
-require([], function (){
+require([], function() {
 
 	var isMobileInit = false;
-	var loadMobile = function(){
-		require(['/js/mobile.js'], function(mobile){
+	var loadMobile = function() {
+		require(['/js/mobile.js'], function(mobile) {
 			mobile.init();
 			isMobileInit = true;
 		});
-	}
+	};
 	var isPCInit = false;
-	var loadPC = function(){
-		require(['/js/pc.js'], function(pc){
+	var loadPC = function() {
+		require(['/js/pc.js'], function(pc) {
 			pc.init();
 			isPCInit = true;
+			if (yiliaConfig.isPost) {
+				pc.slide(1);
+			}
 		});
-	}
+		require(['/js/totop.js'], function(totop) {
+			totop.init();
+		});
+	};
 
-	var browser={
-	    versions:function(){
-	    var u = window.navigator.userAgent;
-	    return {
-	        trident: u.indexOf('Trident') > -1, //IE内核
-	        presto: u.indexOf('Presto') > -1, //opera内核
-	        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-	        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-	        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-	        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-	        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-	        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-	        iPad: u.indexOf('iPad') > -1, //是否为iPad
-	        webApp: u.indexOf('Safari') == -1 ,//是否为web应用程序，没有头部与底部
-	        weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
-	        };
-	    }()
-	}
+	var browser = {
+		versions: function() {
+			var u = window.navigator.userAgent;
+			return {
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+				iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+				iPad: u.indexOf('iPad') > -1, //是否为iPad
+				webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+				weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
+			};
+		}()
+	};
 
-	$(window).bind("resize", function(){
-		if(isMobileInit && isPCInit){
+	$(window).bind("resize", function() {
+		if (isMobileInit && isPCInit) {
 			$(window).unbind("resize");
 			return;
 		}
 		var w = $(window).width();
-		if(w >= 700){
+		if (w >= 700) {
 			loadPC();
-		}else{
+		} else {
 			loadMobile();
 		}
 	});
 
-	if(browser.versions.mobile === true || $(window).width() < 700){
+	if (browser.versions.mobile === true || $(window).width() < 700) {
 		loadMobile();
-	}else{
+	} else {
 		loadPC();
 	}
 
 	//是否使用fancybox
-	if(yiliaConfig.fancybox === true){
-		require(['/fancybox/jquery.fancybox.js'], function(pc){
+	if (yiliaConfig.fancybox === true) {
+		require(['/fancybox/jquery.fancybox.js'], function(pc) {
 			var isFancy = $(".isFancy");
-			if(isFancy.length != 0){
+			if (isFancy.length != 0) {
 				var imgArr = $(".article-inner img");
-				for(var i=0,len=imgArr.length;i<len;i++){
+				for (var i = 0, len = imgArr.length; i < len; i++) {
 					var src = imgArr.eq(i).attr("src");
 					var title = imgArr.eq(i).attr("alt");
-					imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+src+"' title='"+title+"'></a>");
+					imgArr.eq(i).replaceWith("<a href='" + src + "' title='" + title + "' rel='fancy-group' class='fancy-ctn fancybox'><img src='" + src + "' title='" + title + "'></a>");
 				}
 				$(".article-inner .fancy-ctn").fancybox();
 			}
 		});
-		
+
 	}
 	//是否开启动画
-	if(yiliaConfig.animate === true){
+	if (yiliaConfig.animate === true) {
 
-		require(['/js/jquery.lazyload.js'], function(){
+		require(['/js/jquery.lazyload.js'], function() {
 			//avatar
 			$(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
-			$(".js-avatar")[0].onload = function(){
+			$(".js-avatar")[0].onload = function() {
 				$(".js-avatar").addClass("show");
-			}
+			};
 		});
-		
-		if(yiliaConfig.isHome === true){
+
+		require(['/js/ripple-effects.js'], function(ripple) {
+			ripple.init();
+		});
+
+		if (yiliaConfig.isHome === true) {
 			//content
-			function showArticle(){
-				$(".article").each(function(){
-					if( $(this).offset().top <= $(window).scrollTop()+$(window).height() && !($(this).hasClass('show')) ) {
+			var showArticle = function() {
+				$(".article").each(function() {
+					if ($(this).offset().top <= $(window).scrollTop() + $(window).height() && !($(this).hasClass('show'))) {
 						$(this).removeClass("hidden").addClass("show");
 						$(this).addClass("is-hiddened");
-					}else{
-						if(!$(this).hasClass("is-hiddened")){
+					} else {
+						if (!$(this).hasClass("is-hiddened")) {
 							$(this).addClass("hidden");
 						}
 					}
 				});
-			}
-			$(window).on('scroll', function(){
+			};
+			$(window).on('scroll', function() {
 				showArticle();
 			});
 			showArticle();
+			//end
+
+			//clickOnArticle
+			var indexArticleClickAnimate = function($article) {
+				$article.css('box-shadow', '0 0 20px rgba(0,0,0,0.3)')
+					.children('.index-progress')
+					.css('height', '3px');
+			};
+
+			$('article').find('a').not('.article-category-link')
+				.on('mousedown.loadingAnimation', function() {
+					indexArticleClickAnimate($(this).parents('article'));
+				});
+			$('.article-entry').find('a').off('mousedown.loadingAnimation');
+			//end
+
+
+
+			//home ajax
+			var cookiename = encodeURIComponent("ajaxload") + "=",
+				cookie = document.cookie,
+				useAjax = false;
+			var cookieIndex = cookie.indexOf(cookiename);
+			if (cookieIndex >= 0) {
+				var cookieEndIndex = cookie.indexOf(";", cookieIndex);
+				if (cookieEndIndex == -1) cookieEndIndex = cookie.length;
+				useAjax = cookie.substring(cookieIndex + cookiename.length, cookieEndIndex); //"true/false"
+
+				if (useAjax == "true") {
+					useAjax = true;
+				} else {
+					useAjax = false;
+				}
+			}
+
+			//remove disabled
+			var $switchInput = $('.ajax-checkbox').children('input'),
+				durationTime = 24 * 60 * 60 * 1000;
+			$switchInput.prop('disabled', false);
+
+			var ajaxInited = false;
+			var ajaxModule;
+			if (useAjax) {
+				require(['/js/nextpageajax.js'], function(ajax) {
+					ajax.init();
+					ajaxModule = ajax;
+					ajaxInited = true;
+				});
+				$switchInput.prop('checked', true);
+			} else {
+				$switchInput.prop('checked', false);
+			}
+			//set click handler
+			$('.ajax-checkbox').click(function(event) {
+				//fix twice click input in label tag
+				var elementClicked = event.target;
+				if (elementClicked.tagName == 'LABEL') {
+					return;
+				}
+
+				if ($switchInput.is(':checked')) {
+
+					if (ajaxInited) {
+						ajaxModule.bind();
+					} else {
+						require(['/js/nextpageajax.js'], function(ajax) {
+							ajax.init();
+							ajaxModule = ajax;
+							ajaxInited = true;
+						});
+					}
+					document.cookie = (encodeURIComponent("ajaxload") + "=" + encodeURIComponent("true") + "; expires=" + (new Date((Date.now() + durationTime))).toUTCString() + "; secure");
+				} else {
+					ajaxModule.remove();
+					document.cookie = (encodeURIComponent("ajaxload") + "=" + encodeURIComponent("false") + "; expires=" + (new Date((Date.now() + durationTime))).toUTCString() + "; secure");
+				}
+			});
+			//end
+
 		}
-		
+
 	}
-	
+
 	//是否新窗口打开链接
-	if(yiliaConfig.open_in_new == true){
-		$(".article a[href]").attr("target", "_blank")
+	if (yiliaConfig.open_in_new == true) {
+		$(".article a[href]").attr("target", "_blank");
 	}
-	
+
+	//载入分享模块
+	if (yiliaConfig.isPost) {
+		require(['/js/share.js'], function(share) {
+			share.init();
+		});
+	}
+
+
+
 });

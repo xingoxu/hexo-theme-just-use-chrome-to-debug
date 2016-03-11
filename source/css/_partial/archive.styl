@@ -12,7 +12,6 @@
   }
   .archive-year-wrap{
     line-height: 35px;
-    width: 200px;
     position: absolute;
     padding-top: 15px;
     font-size: 1.8em;
@@ -20,7 +19,7 @@
   .archive-year-wrap a{
     color: #666;
     font-weight: bold;
-    padding-left: 48px;
+    padding-left: 60px;
   }
 }
 
@@ -30,8 +29,8 @@
     border: none;
   }
   .archive-article {
-    margin-left:200px;
-    padding:20px 0;
+    margin-left:160px;
+    padding: 16px 0;
     border-bottom: 1px solid rgba(0,0,0,0);
     border-top: 1px solid rgba(0,0,0,0);
     position: relative;
@@ -46,15 +45,13 @@
       border-bottom: none;
     }
   }
-  .archive-article:hover {
-    background: rgba(255,255,255,0.5);
-  }
   .archive-article-title {
     font-size: 16px;
     color: #333;
     transition: color 0.3s;
+    vertical-align: bottom;
     &:hover{
-      color: #657b83;
+      color: #4184f3;
     }
     span{
       display: block;
@@ -81,13 +78,14 @@
     position: relative;
   }
   .article-meta{
+    line-height: 34px;
     position: relative;
-    float: right;
-    margin-top: -10px;
+    float: left;
+    /*margin-top: -10px;*/
     color: #555;
     background: none;
-    text-align: right;
-    width: auto;
+    text-align: center;
+    width: 70px;
     .article-date{
       time{
         color: #aaa;
@@ -105,15 +103,17 @@
     .archive-article-date{
      cursor: default;
      font-size: 12px;
-     margin-bottom: 5px;
-     margin-top: -10px;
+     display: inline-block;
+     /*margin-bottom: 5px;
+     margin-top: -10px;*/
      time{
       &:before {
-        content: "\f073";
+        content: initial;
         color: #999;
-        position: relative;
-        margin-right: 10px;
-        font: 16px FontAwesome;
+        position: absolute;
+        width: 0;
+        height: 0;
+        font: initial;
       }
      }
     }
@@ -142,5 +142,9 @@
         font-size: 12px;
       }
     }
+  }
+  h1 {
+    line-height: 34px;
+    margin-left: 70px;
   }
 }

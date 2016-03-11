@@ -5,14 +5,6 @@
 
 @import "fonts"
 
-@font-face {
-  font-family:'FontAwesome';
-  src:url("fonts/fontawesome-webfont.eot");
-  src:url("fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/fontawesome-webfont.woff") format("woff"),url("fonts/fontawesome-webfont.ttf") format("truetype"),url("fonts/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");
-  font-weight:normal;
-  font-style:normal
-}
-
 global-reset()
 
 ol{
@@ -28,16 +20,6 @@ input, button
   &::-moz-focus-inner
     border: 0
     padding: 0
-
-@font-face
-  font-family: FontAwesome
-  font-style: normal
-  font-weight: normal
-  src: url(font-icon-path + ".eot?v=#" + font-icon-version)
-  src: url(font-icon-path + ".eot?#iefix&v=#" + font-icon-version) format("embedded-opentype"),
-       url(font-icon-path + ".woff?v=#" + font-icon-version) format("woff"),
-       url(font-icon-path + ".ttf?v=#" + font-icon-version) format("truetype"),
-       url(font-icon-path + ".svg#fontawesomeregular?v=#" + font-icon-version) format("svg")
 
 html, body, #container
   height: 100%
@@ -70,13 +52,15 @@ h3 {
 h4,h5,h6{
   font-size:1em
 }
+p {
+  word-wrap:break-word;
+}
 
 a {
   text-decoration:none;
   outline-width:0;
   color:#258fb8;
   outline: none;
-  word-break: break-word;
 }
 
 .alignleft {
@@ -108,16 +92,18 @@ a {
 
 @import "_extend"
 @import "_partial/main"
-@import "_partial/archive"
+@import "_partial/switches"
+/*@import "_partial/archive"*/
 @import "_partial/article"
 @import "_partial/archive"
 @import "_partial/highlight"
 @import "_partial/footer"
 @import "_partial/share"
 @import "_partial/page"
+@import "_partial/duoshuo"
 @import "_partial/instagram"
 @import "_partial/tagcloud"
-/*@import "_partial/scroll"*/
+@import "_partial/loading-circle"
 @import "_partial/mobile-slider"
 
 if sidebar
