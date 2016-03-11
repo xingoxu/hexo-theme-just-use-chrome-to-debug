@@ -84,12 +84,17 @@ git pull
 
 ## PC
 
+![](https://dn-xingoxu.qbox.me/github/Paper-White/pc.png)
+
 ## Mobile
+
+![](https://dn-xingoxu.qbox.me/github/Paper-White/mobile.png)
 
 ## Pad
 
+![](https://dn-xingoxu.qbox.me/github/Paper-White/pad.png)
 
-# 预告  
+# 预告 
 
 以下功能都会在~~有生之年~~开发
 

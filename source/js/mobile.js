@@ -73,9 +73,10 @@ define([], function() {
 		};
 
 		var lastClickPosition = 0;
-		var $bodyElem = $(document);
+		var $docuElem = $(document);
+		var $bodyElem = $('html,body');
 		$header[0].addEventListener("touchstart", function() {
-			lastClickPosition = $bodyElem.scrollTop();
+			lastClickPosition = $docuElem.scrollTop();
 			$bodyElem.animate({
 				scrollTop: 0
 			}, 'slow');
