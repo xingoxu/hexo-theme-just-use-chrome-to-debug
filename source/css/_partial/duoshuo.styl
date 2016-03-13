@@ -399,11 +399,63 @@ span.ua {
         }
     }
 }
+body {
+    #ds-thread #ds-reset a.ds-like-thread-button{
+        border: 0; 
+        box-shadow: none; 
+        margin-right: 15px;
+        background: none;
+        position: relative;
+        padding: 8px 4px;
+        &:after{
+            background: #ff6b6b;
+            content: "";
+            position: absolute;
+            height: 4px;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            transition: 0.2s all ease-in-out;
+        }
+        &:hover:after{
+            left: 0;
+            right: 0;
+        }
+        .ds-icon.ds-icon-heart{
+            background: none;
+            height: 14px;
+            color: #FF6B6B;
+            &:before{
+                content: "\f08a";
+                font: 14px FontAwesome;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    #ds-thread #ds-reset .ds-like-tooltip{
+        background: #FEFEFE;
+        filter: none;
+        border: none;
+        border-radius: 2px;
+        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+        padding: 16px;
+    }
+}
 
-@media screen and (max-width: 800px){
+body #ds-thread #ds-reset a.ds-like-thread-button.ds-thread-liked{
+    .ds-icon.ds-icon-heart{
+        &:before{
+            content: "\f004";
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
     #ds-thread #ds-reset .ds-comment-header {
         line-height: inherit !important;
-        padding: 0 !important;
+        padding: 0 0 0 60px !important;
     }
     #ds-thread.ds-narrow #ds-reset .ds-comment-body, #ds-thread.ds-narrow #ds-reset .ds-replybox {
         padding-left: 0 !important;
@@ -419,7 +471,7 @@ span.ua {
         margin: .5em 0 !important;
     }
     .ds-replybox .ds-avatar {
-        // display: none;
+        display: none;
     }
     
 }

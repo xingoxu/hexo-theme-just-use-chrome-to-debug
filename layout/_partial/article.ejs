@@ -54,14 +54,14 @@
     </div>
   <% } %>
   
-  <% if (!index && theme.share){ %>
+  <% if (!index && theme.share && (post.share!==false) ){ %>
     <%- partial('post/share',{post:post}) %>
   <% } %>
 </article>
 
 
 
-<% if (!index && theme.duoshuo && post.comments && post.slug){ %>
+<% if (!index && theme.duoshuo && post.comments){ %>
 <%- partial('post/duoshuo', {
     key: post.slug,
     title: post.title,

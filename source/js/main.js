@@ -12,7 +12,7 @@ require([], function() {
 		require(['/js/pc.js'], function(pc) {
 			pc.init();
 			isPCInit = true;
-			if (yiliaConfig.isPost) {
+			if (paperWhiteConfig.isPost) {
 				pc.slide(1);
 			}
 		});
@@ -60,7 +60,7 @@ require([], function() {
 	}
 
 	//是否使用fancybox
-	if (yiliaConfig.fancybox === true) {
+	if (paperWhiteConfig.fancybox === true) {
 		require(['/fancybox/jquery.fancybox.js'], function(pc) {
 			var isFancy = $(".isFancy");
 			if (isFancy.length != 0) {
@@ -76,7 +76,7 @@ require([], function() {
 
 	}
 	//是否开启动画
-	if (yiliaConfig.animate === true) {
+	if (paperWhiteConfig.animate === true) {
 
 		require(['/js/jquery.lazyload.js'], function() {
 			//avatar
@@ -90,7 +90,7 @@ require([], function() {
 			ripple.init();
 		});
 
-		if (yiliaConfig.isHome === true) {
+		if (paperWhiteConfig.isHome === true) {
 			//content
 			var showArticle = function() {
 				$(".article").each(function() {
@@ -192,12 +192,12 @@ require([], function() {
 	}
 
 	//是否新窗口打开链接
-	if (yiliaConfig.open_in_new == true) {
+	if (paperWhiteConfig.open_in_new == true) {
 		$(".article a[href]").attr("target", "_blank");
 	}
 
 	//载入分享模块
-	if (yiliaConfig.isPost) {
+	if (paperWhiteConfig.canShare) {
 		require(['/js/share.js'], function(share) {
 			share.init();
 		});

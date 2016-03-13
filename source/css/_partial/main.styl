@@ -11,6 +11,12 @@
 			background-image: url(overlay-pic);
 			background-size: cover;
 			background-position: top center;
+			.banner-cover{
+				position: relative;
+    			height: 100%;
+    			width: 100%;
+    			background: rgba(0,0,0,0.25);
+			}
 			&.fixed{
         		box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 		        position: fixed;
@@ -32,7 +38,7 @@
     			margin: 0 auto;
     			position: relative;
     			overflow: hidden;
-    			-webkit-transition: all 0.2s ease-in;
+    			transition: all 0.2s ease-in;
     			display: -webkit-box;
     			-webkit-box-orient: horizontal;
     			-webkit-box-pack: center;
@@ -41,7 +47,11 @@
 				img{
 					width: 100%;
     				height: 100%;
-    				opacity: 1;
+    				opacity: 0;
+					transition: opacity 0.2s ease-in;
+    				&.show{
+    					opacity: 1;
+    				}
 				}
 			}
 			.header-menu{
@@ -86,6 +96,7 @@
 			margin: 24px 0 0;
 			height: 100%;
 		}
+
 	}
 	.mid-col {
 		position:absolute;
@@ -104,10 +115,11 @@
 		@import "_partial/mobile"
 	}
 }
+@import "_partial/search-box"
 .header-author{
 	text-align: center;
 	margin: 0.3em 0; /*0.67em*/
-	font-family: Roboto,"Roboto",Microsoft JHengHei Light,"微软雅黑 Light",Microsoft Yahei Light,Microsoft JHengHei,"微软雅黑",Microsoft Yahei,monospace;
+	font-family: Roboto,"Roboto",Microsoft JHengHei Light,"微软雅黑 Light",Microsoft Yahei Light,Microsoft JHengHei,"微软雅黑",Microsoft Yahei,"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica;
 	font-size: 30px;
 	transition: 0.3s;
 }
@@ -153,7 +165,7 @@
 			position: relative;
 			overflow: hidden;
 			background: #88acdb;
-			-webkit-transition: all 0.2s ease-in;
+			transition: all 0.2s ease-in;
 			display: -webkit-box;
 			-webkit-box-orient: horizontal;
 			-webkit-box-pack: center;
@@ -167,7 +179,7 @@
 				position: absolute;
 				left: 0;
 				top: 0;
-				-webkit-transition: all 0.2s ease-in;
+				transition: opacity 0.2s ease-in;
 				&.show{
 					width: 100%;
 					height: 100%;
@@ -209,9 +221,13 @@
 		li{
 			cursor: default;
 			position: relative;
-			padding: 0 15px;
-			
+			&>div{
+				box-sizing: border-box;
+				padding: 0 15px;
+			}
 			a{
+				box-sizing: border-box;
+				padding: 0 15px;
 				width: 100%;
 				display: inline-block;
     			transition: all .1s ease-in-out;
@@ -369,8 +385,10 @@
    	}
    	a.bangumi{
    		background: url('https://bgm.tv/img/favicon.ico') center no-repeat;
+   		top: -1px;
    		&:before{
    			background: #FE8A95;
+   			bottom: -1px;
    		}
    	}
    	a.weibo{
@@ -438,7 +456,12 @@
     transition: 0.3s;
     opacity: 0;
     i {
+    	box-sizing: border-box;
+    	display: block;
+    	width: 100%;
     	cursor: pointer;
+    	padding: 0 15px;
+    	line-height: 30px;
     	&:hover{
     		color: #4184f3;
     	}

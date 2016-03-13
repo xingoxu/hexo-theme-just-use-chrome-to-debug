@@ -10,6 +10,7 @@ define([], function() {
 	var $menu = $('.slider-trigger'),
 		$viewer = $('#viewer'),
 		$viewerBoxLeft = $('.viewer-box-l'),
+		$body = $('html body'),
 		basicwrap,
 
 		show = function() {
@@ -18,6 +19,7 @@ define([], function() {
 				complete: function() {
 					$viewer.addClass('show');
 					$viewerBoxLeft.addClass('show');
+					$body.css('overflow', 'hidden');
 				}
 			});
 		},
@@ -27,6 +29,7 @@ define([], function() {
 			$viewerBoxLeft.removeClass('show');
 			setTimeout(function() {
 				$viewer.hide();
+				$body.css('overflow', '');
 			}, 250);
 		};
 
@@ -60,7 +63,7 @@ define([], function() {
 
 		window.onscroll = function() {
 			var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
-			if (scrollTop >= 69) { 
+			if (scrollTop >= 69) {
 				$overlay.addClass("fixed");
 			} else {
 				$overlay.removeClass("fixed");
@@ -75,18 +78,42 @@ define([], function() {
 		var lastClickPosition = 0;
 		var $docuElem = $(document);
 		var $bodyElem = $('html,body');
-		$header[0].addEventListener("touchstart", function() {
+		$header.bind("touchstart", function() {
 			lastClickPosition = $docuElem.scrollTop();
 			$bodyElem.animate({
 				scrollTop: 0
 			}, 'slow');
-		}, false);
+		});
 		$headerName.bind('touchstart', function() {
 			$bodyElem.animate({
 				scrollTop: lastClickPosition
 			}, 'slow');
 		});
 		//totop end
+
+
+		//bind viewer-div
+		var animating = false;
+		var $viewerTitle = $('span.viewer-title');
+		$viewerTitle.bind('touchend', function(event) {
+			if (animating) {
+				return;
+			}
+			animating = true;
+			var $item = $(event.currentTarget);
+			if ($item.is('.hide')) {
+				$item.siblings('.viewer-div').slideDown(300, function() {
+					$item.removeClass('hide');
+					animating = false;
+				});
+			} else {
+				$item.siblings('.viewer-div').slideUp(300, function() {
+					$item.addClass('hide');
+					animating = false;
+				});
+			}
+		});
+		//end
 	};
 
 

@@ -63,11 +63,10 @@ define([], function() {
 		var timeout = 5000; //5秒后关闭
 		var taskid = 0;
 
-		$(".tips-inner li").bind("click", function() {
+		$(".tips-inner li").bind("mouseup", function() {
 			index = $(this).index();
 			slide(index);
 			Tips.hide();
-			return false;
 		});
 
 		$('body').click(function() {

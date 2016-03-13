@@ -3,7 +3,7 @@
 <% } %>
 
 <script>
-	var yiliaConfig = {
+	var paperWhiteConfig = {
 		fancybox: <%=theme.fancybox%>,
 		mathjax: <%=theme.mathjax%>,
 		animate: <%=theme.animate%>,
@@ -12,6 +12,7 @@
 		isArchive: <%=is_archive()%>,
 		isTag: <%=is_tag()%>,
 		isCategory: <%=is_category()%>,
+		canShare: <%= (theme.share && (page.share!==false) && !!page.title) %>,
 		open_in_new: <%=theme.open_in_new%>
 	}
 </script>

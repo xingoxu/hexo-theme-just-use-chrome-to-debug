@@ -1,22 +1,28 @@
-# Paper White
-### A Hexo Theme
+# Paper White - A Hexo Theme
 ================
 
 [![](https://dn-xingoxu.qbox.me/github/Paper-White/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-just-use-chrome-to-debug/archive/master.zip)
 
-## Update v0.8:  
+## Update v0.9:  
 
-2016.03.12 - 大量更新 {   
-	1. IE11 导航问题解决,  
-	2. 导航按钮与部分按钮添加ripple效果,  
-	3. 加入首页文章点击动画与无限加载,  
-	4. 右侧 动画/概要 添加,  
-	5. 修改archives效果,   
-	6. 多说样式调整,  
-	7. 分享功能自造轮子（可带图，需要在文章前进行声明）,  
-	8. 移动端侧栏内容样式调整,  
+> 2016.03.13 - {
+  1. 加入搜索框
+  2. 移动端侧栏title可进行收缩
+  3. 修复一大堆新功能问题，提升稳定性
 }
-2016.03.06 - 公布
+
+> 2016.03.12 - 大量更新　{   
+  1. IE11 导航问题解决,  
+  2. 导航按钮与部分按钮添加ripple效果,  
+  3. 加入首页文章点击动画与无限加载,  
+  4. 右侧 动画/概要 添加,  
+  5. 修改archives效果,   
+  6. 多说样式调整,  
+  7. 分享功能自造轮子（可带图，需要在文章前进行声明）,  
+  8. 移动端侧栏内容样式调整，更丰富
+}
+
+> 2016.03.06 - 公布
 
 # Intro
 
@@ -94,7 +100,7 @@ git pull
 
 ![](https://dn-xingoxu.qbox.me/github/Paper-White/pad.png)
 
-# 预告 
+# 预告  
 
 以下功能都会在~~有生之年~~开发
 
@@ -105,3 +111,4 @@ git pull
 * 右侧栏bangumi update
 * Category
 * 侧栏导航加入图标
+* 底部导航更改

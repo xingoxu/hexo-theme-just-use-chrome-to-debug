@@ -28,6 +28,7 @@ define([], function() {
 			var offsetY = event.pageY - top;
 		} else {
 			console.log(event.originalEvent);
+			top = top - $(document).scrollTop();
 			var offsetX = event.clientX - left;
 			var offsetY = event.clientY - top;
 		}
@@ -42,6 +43,7 @@ define([], function() {
 			.css('top', (offsetY - radius / 2) + 'px');
 		$itemClicked.append($rippleDiv);
 		$rippleRemove = $rippleDiv;
+		event.stopPropagation();
 	};
 	var removeRippleEffectHandler = function() {
 		if (!$rippleRemove) {
@@ -60,10 +62,11 @@ define([], function() {
 
 	return {
 		init: function() {
-			$('.tips-inner').children('li')//TODO desktop touch
+			$('.tips-inner li') //TODO desktop touch
+				//when bind mousedown and up,Firefox won't execute click event
 				.on('mousedown', null, "pc", addRippleEffectHandler)
 				.on('mouseup', null, "pc", removeRippleEffectHandler);
-			$('#viewer-box .viewer-box-l .viewer-box-wrap>span,#viewer-box .viewer-box-l .viewer-box-wrap li')//should investgate why touchstart and end didn't let click happen;
+			$('#viewer-box .viewer-box-l .viewer-box-wrap>.viewer-title,#viewer-box .viewer-box-l .viewer-box-wrap li') //should investgate why touchstart and end didn't let click happen;
 				.on('mousedown', null, "mobile", addRippleEffectHandler)
 				.on('mouseup', null, "mobile", removeRippleEffectHandler);
 		}

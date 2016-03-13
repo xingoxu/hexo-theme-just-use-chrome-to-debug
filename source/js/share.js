@@ -78,13 +78,21 @@ define([], function() {
 
 	$sharediv.children('.share-wechat').click(function() {
 		$bodymask.fadeIn(300);
-		$qrcodeModule.addClass('show');
+		$qrcodeModule.show({
+			duration: 0,
+			complete: function() {
+				$qrcodeModule.addClass('show');
+			}
+		});
 		$body.css('overflow', 'hidden');
 	});
 	$bodymask.click(function() {
 		if (isSecondClick) return;
 		isSecondClick = true;
 		$qrcodeModule.removeClass('show');
+		setTimeout(function() {
+			$qrcodeModule.hide();
+		}, 300);
 		$body.css('overflow', '');
 		$bodymask.fadeOut(300, function() {
 			$(this).hide();
@@ -93,7 +101,9 @@ define([], function() {
 	});
 
 	return {
-		init: function() {}
+		init: function() {
+			$qrcodeModule.hide();
+		}
 	};
 
 

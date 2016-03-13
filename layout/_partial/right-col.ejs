@@ -4,7 +4,7 @@
 			<div class="overlay"></div>
 			<a href="/" class="profilepic">
 			<% if (theme.animate){ %>
-				<img lazy-src="<%=theme.avatar%>" class="js-avatar"> -->
+				<img lazy-src="<%=theme.avatar%>" class="js-avatar">
 			<% } else { %>
 				<img src="<%=theme.avatar%>" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
 			<% } %>
@@ -102,6 +102,15 @@
 								</div>
 				        	</li>
 				        <% } %>
+				        <li>
+				        	<form class="search-box" action="//google.com/search" method="get" target="_blank" accept-charset="utf-8">
+				        		<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="">
+				        		<label class="search-icon" for="search">
+				        			<%- partial('search-icon') %>
+				        		<input type="hidden" class="hide" name="q" value="site:<%- config.url.replace(/^https?:\/\//, '') %>">
+				        		</label>
+				        	</form>
+				        </li>
 				        <li id="totop" title="回顶部"><i class="fa fa-angle-double-up"></i></li>
 						</ul>
 					</nav>
