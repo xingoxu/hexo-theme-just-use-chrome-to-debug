@@ -1,0 +1,72 @@
+# Header
+menu:
+  主页: /
+  所有文章: /archives
+  # 关于我: /about
+  # 作品: /works
+  # 随笔: /tags/随笔
+
+# SubNav
+subnav:
+  github:  "" #"https://github.com/xingoxu"
+  weibo:   "" #"http://weibo.com/pokemonxu/"
+  #facebook: "#"
+  #google: "#"
+  twitter: "" #"https://twitter.com/xingoxu"
+  bangumi: "" #"https://bgm.tv/user/xingo"
+  mail:    "" #"mailto:admin@xingoxu.com"
+  rss:     "" #"/atom.xml"
+  #linkedin: "#"
+
+rss: /atom.xml
+
+# Content
+excerpt_link: more
+fancybox: true
+mathjax: true
+
+# 是否开启动画效果
+animate: true
+
+# 是否在新窗口打开链接
+open_in_new: false
+
+toc:
+  article: true   ## show contents in article.
+  aside: true     ## show contents in aside.
+
+# Miscellaneous
+google_analytics: ''
+favicon: /favicon.ico
+
+#你的头像url
+avatar:   #https://dn-xingoxu.qbox.me/author.jpg
+#是否开启分享
+share: true
+shareid: 
+  tsina:  #1804320382 填入新浪的id，非字母！
+  twitter: #xingoxu
+#  google_plus: 
+#  fb_admins: 
+#  fb_app_id: 
+
+#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
+#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
+duoshuo:   #blog-xingoxu
+
+#是否开启友情链接
+#不开启——
+#friends: false
+#开启——
+friends:
+  奥巴马的博客: http://blog.obama.net/ 
+
+
+#是否开启“关于我”。
+#不开启——
+aboutme: false
+#开启——
+#aboutme: 奥巴马在用了这个主题之后不小心说出了自己的QQ号123456789
+# 头图
+titlepic:   #https://dn-xingoxu.qbox.me/blog_theme/banner_v1.png
+
