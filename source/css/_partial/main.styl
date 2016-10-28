@@ -83,12 +83,12 @@
 		}
 	}
 	.right-col {
-		/*background: #fff;*/
 		width: 21%;
 		right: 2%;
 		position: fixed;
 		opacity: 1;
-		transition:all .2s ease-in;
+		animation: transleft .4s ease-out;
+		// transition:all .2s ease-in;
 		height:100%;
 		.intrude-less {
 			width: 100%;
@@ -113,6 +113,16 @@
 		
 	}@media screen and (max-width:800px) {
 		@import "_partial/mobile"
+	}
+}
+@keyframes transleft {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0px);
 	}
 }
 @import "_partial/search-box"
@@ -305,6 +315,7 @@
 		left: 200%;
 		line-height: 30px;
 		text-align: left;
+		word-break: break-all;
 		a {
 			display: inline-block;
 			width: 100%;

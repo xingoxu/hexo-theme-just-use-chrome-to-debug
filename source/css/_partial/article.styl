@@ -16,12 +16,17 @@
   transition: all 0.1s ease-in;
   &.show{
     visibility: visible;
-    -webkit-animation: transup 0.6s ease-in-out;
-    -moz-animation: transup 0.6s ease-in-out;
-    animation: transup 0.6s ease-in-out;
+    -webkit-animation: transup 0.4s ease-out;
+    -moz-animation: transup 0.4s ease-out;
+    animation: transup 0.4s ease-out;
   }
   &.hidden{
     visibility: hidden;
+  }
+  &.article-page {
+    -webkit-animation: transup 0.4s ease-out;
+    -moz-animation: transup 0.4s ease-out;
+    animation: transup 0.4s ease-out;
   }
   img{
     max-width: 100%;
@@ -130,22 +135,26 @@
 }
 @-webkit-keyframes transup {
     from {
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,100%,0);
+        opacity: 0;
+        -webkit-transform: translate3d(0,50px,0);
+        transform: translate3d(0,50px,0);
     }
 
     to {
+        opacity: 1;
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0)
     }
 }
 @-moz-keyframes transup {
     from {
-        -moz-transform: translate3d(0,100%,0);
-        transform: translate3d(0,100%,0);
+        opacity: 0;
+        -moz-transform: translate3d(0,50px,0);
+        transform: translate3d(0,50px,0);
     }
 
     to {
+        opacity: 1;
         -moz-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0)
     }
@@ -153,12 +162,14 @@
 
 @keyframes transup {
     from {
-        -moz-transform: translate3d(0,100%,0);
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,100%,0);
+        opacity: 0;
+        -moz-transform: translate3d(0,50px,0);
+        -webkit-transform: translate3d(0,50px,0);
+        transform: translate3d(0,50px,0);
     }
 
     to {
+        opacity: 1;
         -moz-transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0)
@@ -395,7 +406,7 @@ a.article-title{
   }
   ul,ol{
     font-size: 14px;
-    margin: 10px 0px;  
+    margin: 10px 0px;
   }
   li{
     ul,ol{
