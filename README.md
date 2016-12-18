@@ -1,6 +1,11 @@
 # Paper White - A Hexo Theme
 ================
 
+> 此项目已迁移到[这里](https://github.com/xingoxu/xingoxu.github.io/tree/source/themes/Paper-White)，这里将不再更新！
+
+
+
+
 [![](https://dn-xingoxu.qbox.me/github/Paper-White/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-paper-white/archive/master.zip)
 
 ## Update v0.9:  
