@@ -89,6 +89,9 @@ $ git clone https://github.com/xingoxu/hexo-theme-paper-white.git themes/Paper-W
 ## 配置
 
 修改hexo根目录下的 `_config.yml` ： `theme: Paper-White`
+主题下的_config.yml也已经做过了注释，当然也可以参照我的config.yml
+[hexo的_config.yml](https://github.com/xingoxu/xingoxu.github.io/blob/source/_config.yml)
+[主题的_config.yml](https://github.com/xingoxu/xingoxu.github.io/blob/source/themes/_config.yml)
 
 ## 更新
 
