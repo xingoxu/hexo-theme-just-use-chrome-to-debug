@@ -1,14 +1,16 @@
 # Paper White - A Hexo Theme
 ================
 
-> 此项目已迁移到[这里](https://github.com/xingoxu/xingoxu.github.io/tree/source/themes/Paper-White)，这里将不再更新！
+[![](https://od8634671.qnssl.com/github/Paper-White/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-paper-white/archive/master.zip)
 
-
-
-
-[![](https://dn-xingoxu.qbox.me/github/Paper-White/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-paper-white/archive/master.zip)
+[图看不到点这里~~~~(>_<)~~~~](https://od8634671.qnssl.com/github/Paper-White/Showcase-Template-Flat-Presentation.png)
 
 ## Update v0.9:  
+
+> 2016.12.18 - {
+  1. 修正highlight的height
+}
+
 > 2016.10.28 - {
   1. 添加/修正微量动画
 }
@@ -58,6 +60,7 @@
   
 如果你想体验手机浏览效果，可以扫一下二维码：  
 ![xingoxu-qrcode](https://blog-xingoxu.duoshuo.com/api/qrcode/getImage.png?size=240&text=https://blog.xingoxu.com/)
+[图看不到点这里！](https://blog-xingoxu.duoshuo.com/api/qrcode/getImage.png?size=240&text=https://blog.xingoxu.com/)
 
 —————————————————————
 

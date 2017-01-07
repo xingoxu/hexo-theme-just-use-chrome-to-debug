@@ -1,9 +1,10 @@
 // https://github.com/chriskempson/tomorrow-theme
 
-code-bgc = #272822
+// code-bgc = #272822
+code-bgc = #22262d
 code-tag = #F92672
 code-attr = #A6E22E
-code-word = #FFFFFF
+code-word = rgb(192, 197, 206)
 code-value = #E6DB74
 code-number = #7163D7
 code-keyword = #66D9EF
@@ -15,9 +16,10 @@ $code-block
   margin: 10px 0
   padding: 10px 10px
   overflow: auto
-  color: #4C4C4C
+  color: code-word
   line-height: font-size * line-height
   border-radius: 4px
+  text-shadow: none
 
 $line-numbers
   color: #666
@@ -29,14 +31,16 @@ $line-numbers
     background: color-background
     padding: 0 0.3em
     border: none
-  pre
+  pre{
     @extend $code-block
     color: code-word
-    code
+    code{
       background: none
       text-shadow: none
       padding: 0
       color: code-word
+    }
+  }
   .highlight
     @extend $code-block
     pre
@@ -57,15 +61,18 @@ $line-numbers
       margin-bottom: 1em
       a
         float: right
-    .gutter pre
+    .gutter pre{
       @extend $line-numbers
       text-align: right
       padding-right: 20px
-      .line
+      .line{
         text-shadow: none
-    .line
+      }
+    }
+    .line {
       font-size: 15px
-      height: 15px
+      // height: 15px
+    }
   .gist
     margin: 0 article-padding * -1
     border-style: solid
@@ -145,3 +152,103 @@ pre
   .id
   .css ~ * .id
     color: code-argument
+
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+
+// .highlight {
+//   display: block;
+//   overflow-x: auto;
+//   padding: 0.5em;
+//   color: #abb2bf;
+//   background: #282c34;
+// }
+
+.highlight .comment,
+.highlight .quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.highlight .doctag,
+.highlight .keyword,
+.highlight .formula {
+  color: #c678dd;
+}
+
+.highlight .section,
+.highlight .name,
+.highlight .selector-tag,
+.highlight .deletion,
+.highlight .subst {
+  color: #e06c75;
+}
+
+.highlight .literal {
+  color: #56b6c2;
+}
+
+.highlight .string,
+.highlight .regexp,
+.highlight .addition,
+.highlight .attribute,
+.highlight .meta-string {
+  color: #98c379;
+}
+
+.highlight .built_in,
+.highlight .class .highlight .title {
+  color: #e6c07b;
+}
+
+.highlight .attr,
+.highlight .variable,
+.highlight .template-variable,
+.highlight .type,
+.highlight .selector-class,
+.highlight .selector-attr,
+.highlight .selector-pseudo,
+.highlight .number {
+  color: #d19a66;
+}
+
+.highlight .symbol,
+.highlight .bullet,
+.highlight .link,
+.highlight .meta,
+.highlight .selector-id,
+.highlight .title {
+  color: #61aeee;
+}
+
+.highlight .emphasis {
+  font-style: italic;
+}
+
+.highlight .strong {
+  font-weight: bold;
+}
+
+.highlight .link {
+  text-decoration: underline;
+}
+
+
