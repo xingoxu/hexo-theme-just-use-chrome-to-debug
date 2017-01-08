@@ -15,7 +15,8 @@ define([], function() {
 		titleEncoded = encodeURIComponent(title),
 
 		image = $sharediv.attr('data-image'),
-		imageURLEncoded = encodeURIComponent(image),
+		imageURLEncoded = encodeURIComponent(image), //titleImage
+		allImage = Array.prototype.slice.call($('meta[property="og:image"]')), //allImage
 
 		descriptionEncoded = encodeURIComponent($('head').children('meta[name=description]').attr('content')),
 
@@ -30,7 +31,7 @@ define([], function() {
 
 	var qrcodePicURL = "https://" + (duoshuoid ? duoshuoid : "blog-xingoxu") + ".duoshuo.com/api/qrcode/getImage.png?size=240&text=" + URLEncoded,
 
-		weiboURL = "http://service.weibo.com/share/share.php?title=" + titleEncoded + "&url=" + URLEncoded + "&source=bookmark&appkey=3077078248",
+		weiboURL = "http://service.weibo.com/share/share.php?url=" + URLEncoded + "&title=" + titleEncoded + "&source=bookmark&appkey=3077078248",
 
 		twitterURL = "https://twitter.com/intent/tweet?text=" + titleEncoded + "&url=" + URLEncoded,
 
@@ -39,10 +40,18 @@ define([], function() {
 		qqURL = "http://connect.qq.com/widget/shareqq/index.html?url=" + URLEncoded + "&desc=&title=" + titleEncoded,
 		facebookURL = "https://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=" + titleEncoded + "&p%5Burl%5D=" + URLEncoded;
 
-	if (imageURLEncoded != "undefined") {
-		weiboURL += ("&pic=" + imageURLEncoded);
+	if (imageURLEncoded != "undefined" || allImage.length>0 ) {
+		var imageList = [];
+		if(imageURLEncoded != "undefined"){
+			// weiboURL += ("&pic=" + imageURLEncoded);//titleImage
+			imageList.push(image);//titleImage
+		// facebookURL += ("&p%5Bimages%5D=" + imageURLEncoded); //facebook现在不需要手动给pic了
+		}
+		for (var i = 0; i < allImage.length; i++) {
+			imageList.push($(allImage[i]).attr('content'));
+		}
+		weiboURL += ("&pic=" + encodeURIComponent(imageList.join('||')));
 
-		facebookURL += ("&p%5Bimages%5D=" + imageURLEncoded);
 	}
 	if (tsina != 'undefined' && tsina) {
 		weiboURL += ("&ralateUid=" + tsina);
@@ -76,7 +85,7 @@ define([], function() {
 		$body = $('body'),
 		isSecondClick = false;
 
-	$sharediv.children('.share-wechat').click(function() {
+	var $wechatButton = $sharediv.children('.share-wechat').click(function() {
 		$bodymask.fadeIn(300);
 		$qrcodeModule.show({
 			duration: 0,
@@ -103,7 +112,31 @@ define([], function() {
 	return {
 		init: function() {
 			$qrcodeModule.hide();
-		}
+		},
+		shareWeixin: function(){
+			$wechatButton.click();
+		},
+		shareLinks: [{
+			id: 'weibo',
+			label: '分享至新浪微博',
+			url: weiboURL,
+		},{
+			id: 'qq',
+			label: '分享给QQ好友',
+			url: qqURL
+		},{
+			id: 'twitter',
+			label: 'Tweet',
+			url: twitterURL,
+		},{
+			id: 'facebook',
+			label: 'Share on FaceBook',
+			url: facebookURL
+		},{
+			id: 'google',
+			label: 'Google Plus',
+			url: googleURL,
+		}]
 	};
 
 

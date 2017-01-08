@@ -12,7 +12,7 @@ require([], function() {
 		require(['/js/pc.js'], function(pc) {
 			pc.init();
 			isPCInit = true;
-			if (paperWhiteConfig.isPost) {
+			if (paperWhiteConfig.isPost && $('section.switch-part3').length>0 ) {
 				pc.slide(1);
 			}
 		});
@@ -60,19 +60,60 @@ require([], function() {
 	}
 
 	//是否使用fancybox
+	var photoSwipeOption = {
+		shareEl: false,
+	};
 	if (paperWhiteConfig.fancybox === true) {
-		require(['/fancybox/jquery.fancybox.js'], function(pc) {
-			var isFancy = $(".isFancy");
-			if (isFancy.length != 0) {
-				var imgArr = $(".article-inner img");
-				for (var i = 0, len = imgArr.length; i < len; i++) {
-					var src = imgArr.eq(i).attr("src");
-					var title = imgArr.eq(i).attr("alt");
-					imgArr.eq(i).replaceWith("<a href='" + src + "' title='" + title + "' rel='fancy-group' class='fancy-ctn fancybox'><img src='" + src + "' title='" + title + "'></a>");
-				}
-				$(".article-inner .fancy-ctn").fancybox();
+		// require(['/fancybox/jquery.fancybox.js'], function(pc) {
+		// 	var isFancy = $(".isFancy");
+		// 	if (isFancy.length != 0) {
+		// 		var imgArr = $(".article-inner img");
+		// 		for (var i = 0, len = imgArr.length; i < len; i++) {
+		// 			var src = imgArr.eq(i).attr("src");
+		// 			var title = imgArr.eq(i).attr("alt");
+		// 			imgArr.eq(i).replaceWith("<a href='" + src + "' title='" + title + "' rel='fancy-group' class='fancy-ctn fancybox'><img src='" + src + "' title='" + title + "'></a>");
+		// 		}
+		// 		$(".article-inner .fancy-ctn").fancybox();
+		// 	}
+		// });
+		require([
+			'/photoswipe/photoswipe.min.js',
+			'/photoswipe/photoswipe-ui-default.min.js'
+		], function (PhotoSwipe, PhotoSwipeUI_Default) {
+			if ($(".isFancy").length == 0 || paperWhiteConfig.isHome === true) {
+				return;
 			}
-		});
+			var $imgArr = $(".article-inner img");
+			var pswpElement = $('.pswp')[0];
+
+			var items = []
+
+			$imgArr.each(function(index){
+				var $img = $(this);
+				// var img = $img.getAttribute('data-idx', index);
+				var src = $img.attr('data-target') || $img.prop('src');
+				var title = $img.attr('alt')
+				items.push({
+					src: src,
+					w: this.width,
+					h: this.height,
+					title: title,
+					el: this,
+				})
+
+				$img.click(function(){
+					photoSwipeOption.index = parseInt(index);
+					(new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, photoSwipeOption)).init()
+				});
+			});
+			photoSwipeOption.getThumbBoundsFn = function (index) {
+				// See Options -> getThumbBoundsFn section of documentation for more info
+				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+					rect = items[index].el.getBoundingClientRect();
+
+				return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+			};
+		})
 
 	}
 	//是否开启动画
@@ -200,6 +241,14 @@ require([], function() {
 	if (paperWhiteConfig.canShare) {
 		require(['/js/share.js'], function(share) {
 			share.init();
+			share.shareLinks.push({
+				id: 'download', //暂时都能下载，如有不能下载的需求移动至init进行克隆数组等操作
+				label: '下载',
+				url:'{{raw_image_url}}', 
+				download: true 
+			});
+			photoSwipeOption.shareEl = true;
+			photoSwipeOption.shareButtons = share.shareLinks;
 		});
 	}
 

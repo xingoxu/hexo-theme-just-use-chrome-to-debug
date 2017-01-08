@@ -1,5 +1,43 @@
 <% if (theme.fancybox){ %>
-  <%- css('fancybox/jquery.fancybox') %>
+  <!-- <%- css('fancybox/jquery.fancybox') %> -->
+  <%- css('photoswipe/photoswipe') %>
+  <%- css('photoswipe/default-skin/default-skin') %>
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="pswp__bg"></div>
+	  <div class="pswp__scroll-wrap">
+	    <div class="pswp__container">
+	      <div class="pswp__item"></div>
+	      <div class="pswp__item"></div>
+	      <div class="pswp__item"></div>
+	    </div>
+	    <div class="pswp__ui pswp__ui--hidden">
+	      <div class="pswp__top-bar">
+	        <div class="pswp__counter"></div>
+	        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+	        <button class="pswp__button pswp__button--share" title="Share"></button>
+	        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+	        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+	        <div class="pswp__preloader">
+	          <div class="pswp__preloader__icn">
+	            <div class="pswp__preloader__cut">
+	              <div class="pswp__preloader__donut"></div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+	        <div class="pswp__share-tooltip"></div>
+	      </div>
+	      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+	            </button>
+	      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+	            </button>
+	      <div class="pswp__caption">
+	        <div class="pswp__caption__center"></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
 <% } %>
 
 <script>
@@ -16,7 +54,8 @@
 		open_in_new: <%=theme.open_in_new%>
 	}
 </script>
-<%- js('https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min') %>
+<%- js('https://cdn.staticfile.org/require.js/2.3.2/require.min.js') %>
+<%- js('https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js') %>
 <%- js('js/main') %>
 
 
