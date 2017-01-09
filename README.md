@@ -20,7 +20,7 @@
 ~~（当然不会慢慢继续兼容的）~~  
 
 
-你可以点击 [我的博客](http://blog.xingoxu.com/) 查看最新效果。           
+你可以点击 [我的博客](http://blog.xingoxu.com/) 与 [示例文章](https://blog.xingoxu.com/2016/03/hexo-theme-paper-white/) 查看最新效果。           
  
 完成仓促，如果你有任何的**建议**或者**想法**或者**发现错误**，欢迎：  
 * 提issue给我  
