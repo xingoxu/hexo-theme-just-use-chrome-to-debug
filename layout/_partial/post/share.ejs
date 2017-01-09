@@ -1,9 +1,20 @@
-<div data-url="<%- post.permalink %>" data-title="<% if (post.title){ %>「<%= post.title %>」 | <% } %><%= config.title %>" data-tsina="<%= theme.shareid.tsina %>" data-image="<%= post.titleimage %>" duoshuo-id="<%=theme.duoshuo%>" favicon="<%- config.url+url_for(theme.favicon ) %>" class="article-share">
+<div data-url="<%- post.permalink %>" data-title="<% if (post.title){ %>「<%= post.title %>」 | <% } %><%= config.title %>" data-tsina="<%= theme.shareid.tsina %>" data-image="<%= post.titleimage %>" duoshuo-id="<%=theme.duoshuo%>" favicon="<%- config.url+url_for(theme.favicon) %>" class="article-share">
 		<span class="share-icon" title="分享到"></span>
-		<a class="share-icon share-wechat" href="javascript:;"></a>
+		<a                 class="share-icon share-wechat" href="javascript:;"></a>
 		<a target="_blank" class="share-icon share-weibo"></a>
 		<a target="_blank" class="share-icon share-twitter"></a>
 		<a target="_blank" class="share-icon share-google"></a>
 		<a target="_blank" class="share-icon share-qq"></a>
 		<a target="_blank" class="share-icon share-facebook"></a>
+		
+		<div class="qrcode">
+			<div class="qrcode-body-mask"></div>
+			<div class="qrcode-module">
+				<h2>微信扫一扫，分享到朋友圈</h2>
+				<div id="qrcode-pic"></div>
+				<!-- <img id="qrcode-pic" src="<%- 'https://' + (theme.duoshuo ? theme.duoshuo : 'blog-xingoxu') + '.duoshuo.com/api/qrcode/getImage.png?size=240&text=' + post.permalink %>" /> -->
+				<img id="logo-qrcode" src="<%- url_for(theme.favicon) %>" />
+	  	</div>
+		</div>
+
 </div>

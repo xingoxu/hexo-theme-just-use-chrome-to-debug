@@ -59,59 +59,48 @@ define([], function() {
 	if (twitterid != 'undefined' && twitterid) {
 		twitterURL += ("&via=" + twitterid);
 	}
-	var imgHTML = "";
+	var logoHTML = "";
 	if (iconURLEncoded != 'undefined') {
 		qqURL += ("&pics=" + iconURLEncoded);
-		imgHTML = '<img id="logo-qrcode" src="' + icon + '" />';
+		logoHTML = '<img id="logo-qrcode" src="' + icon + '" />';
 	}
 	if (descriptionEncoded != "undefined") {
 		qqURL += ("&summary=" + descriptionEncoded);
 	}
-	var qrHTML = '<div class="body-mask"></div><div class="qrcode-module"><h2>微信扫一扫，分享到朋友圈</h2><img id="qrcode-pic" src="' + qrcodePicURL + '" />' + imgHTML + '</div>';
+
 
 	$sharediv.children('.share-weibo').attr('href', weiboURL)
 		.siblings('.share-twitter').attr('href', twitterURL)
 		.siblings('.share-google').attr('href', googleURL)
 		.siblings('.share-qq').attr('href', qqURL)
 		.siblings('.share-facebook').attr('href', facebookURL);
+	$('#qrcode-pic').qrcode({
+		width: 230,
+		height: 230,
+		text: URL
+	});
 
 
 
-	$('body').append($(qrHTML));
 
 	//show qrcode bind
-	var $bodymask = $('.body-mask'),
+	var $bodymask = $('.qrcode-body-mask'),
 		$qrcodeModule = $('.qrcode-module'),
-		$body = $('body'),
-		isSecondClick = false;
+		$body = $('body');
 
 	var $wechatButton = $sharediv.children('.share-wechat').click(function() {
-		$bodymask.fadeIn(300);
-		$qrcodeModule.show({
-			duration: 0,
-			complete: function() {
-				$qrcodeModule.addClass('show');
-			}
-		});
+		$bodymask.addClass('show');
+		$qrcodeModule.addClass('show');
 		$body.css('overflow', 'hidden');
 	});
 	$bodymask.click(function() {
-		if (isSecondClick) return;
-		isSecondClick = true;
 		$qrcodeModule.removeClass('show');
-		setTimeout(function() {
-			$qrcodeModule.hide();
-		}, 300);
+		$bodymask.removeClass('show');
 		$body.css('overflow', '');
-		$bodymask.fadeOut(300, function() {
-			$(this).hide();
-			isSecondClick = false;
-		});
 	});
 
 	return {
 		init: function() {
-			$qrcodeModule.hide();
 		},
 		shareWeixin: function(){
 			$wechatButton.click();

@@ -62,20 +62,11 @@ require([], function() {
 	//是否使用fancybox
 	var photoSwipeOption = {
 		shareEl: false,
+		closeOnScroll: false,
+		bgOpacity: 0.8,
+		showAnimationDuration: 333,
 	};
 	if (paperWhiteConfig.fancybox === true) {
-		// require(['/fancybox/jquery.fancybox.js'], function(pc) {
-		// 	var isFancy = $(".isFancy");
-		// 	if (isFancy.length != 0) {
-		// 		var imgArr = $(".article-inner img");
-		// 		for (var i = 0, len = imgArr.length; i < len; i++) {
-		// 			var src = imgArr.eq(i).attr("src");
-		// 			var title = imgArr.eq(i).attr("alt");
-		// 			imgArr.eq(i).replaceWith("<a href='" + src + "' title='" + title + "' rel='fancy-group' class='fancy-ctn fancybox'><img src='" + src + "' title='" + title + "'></a>");
-		// 		}
-		// 		$(".article-inner .fancy-ctn").fancybox();
-		// 	}
-		// });
 		require([
 			'/photoswipe/photoswipe.min.js',
 			'/photoswipe/photoswipe-ui-default.min.js'
@@ -83,36 +74,94 @@ require([], function() {
 			if ($(".isFancy").length == 0 || paperWhiteConfig.isHome === true) {
 				return;
 			}
-			var $imgArr = $(".article-inner img");
-			var pswpElement = $('.pswp')[0];
+			var $imgArr = $(".article-inner img"),
+				  pswpElement = $('.pswp')[0],
+					items = [];
+			var pswpController;
 
-			var items = []
-
-			$imgArr.each(function(index){
-				var $img = $(this);
-				// var img = $img.getAttribute('data-idx', index);
-				var src = $img.attr('data-target') || $img.prop('src');
-				var title = $img.attr('alt')
-				items.push({
-					src: src,
-					w: this.width,
-					h: this.height,
-					title: title,
-					el: this,
+			$imgArr.click(function(){
+				items = [];
+				var _this = this,
+						_index;
+				$imgArr.each(function(index){
+					var $img = $(this);
+					// var img = $img.getAttribute('data-idx', index);
+					var src = $img.attr('data-target') || $img.prop('src');
+					var title = $img.attr('alt');
+					items.push({
+						src: src,
+						w: this.width,
+						h: this.height,
+						title: title,
+						el: this,
+					});
+					if(_this==this){
+						_index = index;
+					}
 				})
-
-				$img.click(function(){
-					photoSwipeOption.index = parseInt(index);
-					(new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, photoSwipeOption)).init()
-				});
+				photoSwipeOption.index = parseInt(_index);
+				pswpController = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, photoSwipeOption);
+				pswpController.init()
 			});
 			photoSwipeOption.getThumbBoundsFn = function (index) {
-				// See Options -> getThumbBoundsFn section of documentation for more info
 				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
 					rect = items[index].el.getBoundingClientRect();
 
 				return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
 			};
+
+			//滚轮下一张
+			var pswpAnimating = false;
+			$('.pswp__scroll-wrap').on('DOMMouseScroll mousewheel',function(event){
+				if(pswpAnimating)
+					return;
+				pswpAnimating = true;
+				event = event.originalEvent;
+				if(!(event.wheelDelta || event.detail))
+					return;
+				var isNextPage = false;
+				if(event.wheelDelta && event.wheelDelta < 0)
+					{ isNextPage = true; }				
+				else if(event.detail && event.detail > 0)
+					{ isNextPage = true; }
+				pswpController[(isNextPage ? 'next': 'prev')]();
+				setTimeout(function(){
+					pswpAnimating = false;
+				},333);//default Animation Time 333;
+			});
+
+
+			// parse picture index and gallery index from URL (#&pid=1&gid=2)
+			var photoswipeParseHash = function () {
+				var hash = window.location.hash.substring(1),
+					params = {};
+
+				if (hash.length < 5) {
+					return params;
+				}
+
+				var vars = hash.split('&');
+				for (var i = 0; i < vars.length; i++) {
+					if (!vars[i]) {
+						continue;
+					}
+					var pair = vars[i].split('=');
+					if (pair.length < 2) {
+						continue;
+					}
+					params[pair[0]] = pair[1];
+				}
+
+				if (params.gid) {
+					params.gid = parseInt(params.gid, 10);
+				}
+
+				return params;
+			};
+			var hashData = photoswipeParseHash();
+			if (hashData.pid && hashData.gid) {
+				$($imgArr[hashData.pid - 1]).click();
+			}
 		})
 
 	}
