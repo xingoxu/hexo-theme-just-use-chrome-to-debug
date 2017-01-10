@@ -37,6 +37,11 @@
 
 ## Update v0.9:  
 
+> 2017.01.13 - {
+  1. photoSwipe翻页有动画
+  2. photoSwipe分享添加hover颜色，增加微信分享
+}
+
 > 2017.01.09 - {
   1. photoSwipe滚轮可翻页，通过hash链接可直接显示图片（暂时没有使用hashChange事件在本地做状态姬）
   2. 微信加快分享（动画改写）

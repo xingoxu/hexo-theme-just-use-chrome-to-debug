@@ -66,6 +66,7 @@ require([], function() {
 		bgOpacity: 0.8,
 		showAnimationDuration: 333,
 	};
+	var shareWeixinFunc;
 	if (paperWhiteConfig.fancybox === true) {
 		require([
 			'/photoswipe/photoswipe.min.js',
@@ -101,7 +102,19 @@ require([], function() {
 				})
 				photoSwipeOption.index = parseInt(_index);
 				pswpController = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, photoSwipeOption);
-				pswpController.init()
+
+				//分享 - 微信hook
+				if (paperWhiteConfig.canShare){
+					pswpController.listen('shareLinkClick',function(e,target){
+						if(!$(e.target).is('.pswp__share--wechat'))
+							return;
+						//移除href使得不打开新窗口
+						$(e.target).removeAttr('href');
+						shareWeixinFunc && shareWeixinFunc();
+					});
+				}
+
+				pswpController.init();
 			});
 			photoSwipeOption.getThumbBoundsFn = function (index) {
 				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
@@ -124,11 +137,23 @@ require([], function() {
 					{ isNextPage = true; }				
 				else if(event.detail && event.detail > 0)
 					{ isNextPage = true; }
+				nextPageAnimation();
 				pswpController[(isNextPage ? 'next': 'prev')]();
 				setTimeout(function(){
 					pswpAnimating = false;
-				},333);//default Animation Time 333;
+				},500);//default Animation Time 333/400transition;
 			});
+			//下一张有动画效果
+			function nextPageAnimation(){
+				console.log($('.pswp__container').css('transform'))
+				$('.pswp__container').css('transition','.3s transform ease');
+				setTimeout(function(){
+					$('.pswp__container').css('transition','');
+				},400);
+			}
+			$('.pswp__button--arrow--left,.pswp__button--arrow--right').mousedown(function(){
+				nextPageAnimation();
+			})
 
 
 			// parse picture index and gallery index from URL (#&pid=1&gid=2)
@@ -298,6 +323,7 @@ require([], function() {
 			});
 			photoSwipeOption.shareEl = true;
 			photoSwipeOption.shareButtons = share.shareLinks;
+			shareWeixinFunc = share.shareWeixin;
 		});
 	}
 

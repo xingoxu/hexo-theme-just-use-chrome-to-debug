@@ -111,8 +111,12 @@ define([], function() {
 			url: weiboURL,
 		},{
 			id: 'qq',
-			label: '分享给QQ好友',
+			label: '分享给 QQ 好友',
 			url: qqURL
+		},{
+			id: 'wechat',
+			label: '分享到微信',
+			url: qrcodePicURL,
 		},{
 			id: 'twitter',
 			label: 'Tweet',
