@@ -110,7 +110,12 @@ require([], function() {
 							return;
 						//移除href使得不打开新窗口
 						$(e.target).removeAttr('href');
-						document.webkitExitFullscreen();
+						
+						//退出全屏
+						var d = document;
+						var exitFullScreen = d.exitFullscreen || d.mozCancelFullScreen || d.webkitExitFullscreen || d.msExitFullscreen;
+						exitFullScreen && exitFullScreen.call(d);
+
 						shareWeixinFunc && shareWeixinFunc();
 					});
 				}
