@@ -2,6 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="handheldfriendly" content="true">
   <meta name="theme-color" content="#325899">
   <script type="text/javascript">
         var host = "blog.xingoxu.com";
@@ -26,7 +30,6 @@
   }
   %>
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%- open_graph({twitter_id: theme.shareid.twitter, google_plus: theme.shareid.google_plus, fb_admins: theme.shareid.fb_admins, fb_app_id: theme.shareid.fb_app_id}) %>
   <% if (theme.rss){ %>
     <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">

@@ -110,6 +110,7 @@ require([], function() {
 							return;
 						//移除href使得不打开新窗口
 						$(e.target).removeAttr('href');
+						document.webkitExitFullscreen();
 						shareWeixinFunc && shareWeixinFunc();
 					});
 				}
@@ -145,7 +146,6 @@ require([], function() {
 			});
 			//下一张有动画效果
 			function nextPageAnimation(){
-				console.log($('.pswp__container').css('transform'))
 				$('.pswp__container').css('transition','.3s transform ease');
 				setTimeout(function(){
 					$('.pswp__container').css('transition','');
