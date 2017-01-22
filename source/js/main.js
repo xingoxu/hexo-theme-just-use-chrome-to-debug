@@ -91,6 +91,7 @@ require([], function() {
 					var title = $img.attr('alt');
 					items.push({
 						src: src,
+						msrc: src,
 						w: this.width,
 						h: this.height,
 						title: title,
