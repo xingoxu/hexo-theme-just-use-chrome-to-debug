@@ -2,7 +2,7 @@
 	<header id="header" class="inner">
 		<div class="profileCard">
 			<div class="overlay"></div>
-			<a href="/" class="profilepic">
+			<a href="<%- theme.top_homepage ? url_for(theme.top_homepage) : '/'  %>" class="profilepic">
 			<% if (theme.animate){ %>
 				<img lazy-src="<%=theme.avatar%>" class="js-avatar">
 			<% } else { %>
@@ -11,7 +11,7 @@
 			</a>
 
 			<hgroup>
-				<h1 class="header-author"><a href="/"><%=theme.author%></a></h1>
+				<h1 class="header-author"><a href="<%- theme.top_homepage ? url_for(theme.top_homepage) : '/'  %>"><%=theme.author%></a></h1>
 				<% if (theme.subtitle){ %>
 					<p class="header-subtitle"><%=theme.subtitle%></p>
 				<% } %>
@@ -103,7 +103,7 @@
 				        	</li>
 				        <% } %>
 				        <li>
-				        	<form class="search-box" action="//google.com/search" method="get" target="_blank" accept-charset="utf-8">
+				        	<form class="search-box" action="//www.google.com/search" method="get" target="_blank" accept-charset="utf-8">
 				        		<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="">
 				        		<label class="search-icon" for="search">
 				        			<%- partial('search-icon') %>

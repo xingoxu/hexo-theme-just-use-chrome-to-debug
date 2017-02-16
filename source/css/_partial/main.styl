@@ -98,7 +98,7 @@
 	}
 	.right-col {
 		width: 21%;
-		right: 2%;
+		right: 40px;
 		position: fixed;
 		opacity: 1;
 		animation: transleft .4s ease-out;
@@ -119,7 +119,7 @@
 		/*background:#eaeaea;*/		
 		/*background: rgba(255,255,255,0.6);*/
 		background-size: cover;
-		right: 23%;
+		right: calc(21% + 40px);
 		width: auto;
 	}
 
@@ -129,6 +129,21 @@
 		@import "_partial/mobile"
 	}
 }
+
+@media screen and (min-width:1640px) {
+	#container {
+		width: 1600px;
+		margin: 0 auto;
+		.right-col {
+			width: 336px;
+			right: calc((100% - 1600px)/2 + 40px);
+		}
+	}
+}
+
+
+
+
 @keyframes transleft {
 	from {
 		opacity: 0;
@@ -165,6 +180,7 @@
     overflow: hidden;
     padding-top: 26.3%;
     position: relative;
+    max-height: 377px;
     .overlay{
 			width: 100%;
 			height: 0;
@@ -191,10 +207,10 @@
 			// background: #88acdb;
 			background: #FFF;
 			transition: all 0.2s ease-in;
-			display: -webkit-box;
-			-webkit-box-orient: horizontal;
-			-webkit-box-pack: center;
-			-webkit-box-align: center;
+			// display: -webkit-box;
+			// -webkit-box-orient: horizontal;
+			// -webkit-box-pack: center;
+			// -webkit-box-align: center;
 			img{
 				// width: 100%;
 				// height: 100%;
@@ -213,8 +229,6 @@
 			}
 		}
 		hgroup{
-			margin: -moz-calc((45% - 40px - 37px - 25px)/2) 0;
-			margin: -webkit-calc((45% - 40px - 37px - 25px)/2) 0;
 			margin: calc((45% - 40px - 37px - 25px)/2) 0;
 		}
 		

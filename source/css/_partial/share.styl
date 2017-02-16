@@ -1,6 +1,14 @@
+share-wechat = #00D400
+share-weibo = #E6162D
+share-twitter = #1DA1F2
+share-google = #c83d20
+share-qq = #169ADA
+share-facebook = #3b5998
+
 .article-share{
 	font-size: 0;
 	text-align: right;
+	margin-top: 24px;
 	.share-icon{
 		position: relative;	
 		font: 18px FontAwesome;
@@ -30,103 +38,143 @@
 		color: #CFD1D4;
 		content: "\f064";
 	}
-	.share-wechat{
+	share-icon(content,color){
 		&:before{
-			content: "\f1d7";
-			color: #00D400;
+			content: content;
+			color: color;
 		}
 		&:after{
-			background: #00D400;
+			background: color;
 		}
+	}
+	.share-wechat{
+		share-icon("\f1d7",share-wechat);
 	}
 	.share-weibo{
-		&:before{
-			content: "\f18a";
-    		color: #E6162D;
-		}
-		&:after{
-    		background: #E6162D;
-		}
+		share-icon("\f18a",share-weibo);
 	}
 	.share-twitter{
-		&:before{
-			content: "\f099";
-    		color: #1DA1F2;
-		}
-		&:after{
-    		background: #1DA1F2;
-		}
+		share-icon("\f099",share-twitter);
 	}
 	.share-google{
-		&:before{
-			content: "\f0d5";
-    		color: #c83d20;
-		}
-		&:after{
-    		background: #c83d20;
-		}
+		share-icon("\f0d5",share-google);
 	}
 	.share-qq{
-		&:before{
-			content: "\f1d6";
-    		color: #169ADA;
-		}
-		&:after{
-    		background: #169ADA;
-		}
+		share-icon("\f1d6",share-qq);
 	}
 	.share-facebook{
-		&:before{
-			content: "\f230";
-    		color: #3b5998;
-		}
-		&:after{
-    		background: #3b5998;
-		}
+		share-icon("\f230",share-facebook);
+	}
+	div.qrcode {
+		font-size: 16px;
+		text-align: left;
 	}
 }
-.body-mask{
-	display: none;
+.qrcode-body-mask{
+	visibility: hidden;
 	position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 998;
-    background: rgba(0,0,0,.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background: rgba(0,0,0,.5);
+	opacity: 0;
+	transition: .3s all ease;
+	transition-property: opacity,visibility;
+	&.show {
+		visibility: visible;
+		opacity: 1;
+	}
 }
 
 .qrcode-module{
 	position: fixed;
-    width: 260px;
-    height: 281px;
-    
-    left: calc(50% - 154px);
-    top: 100%;
-    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.4);
-    background: #fff;
-    border-radius: 4px;
-    z-index: 999;
-    padding: 24px;
-	transition: .3s top;
+  width: 260px;
+  height: 281px;
+  
+  left: calc(50% - 154px);
+	top: calc(50% - 165px);
+	transform: translate3d(0,100vh,0);
+	visibility: hidden;
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.4);
+  background: #fff;
+  border-radius: 4px;
+  z-index: 9999;
+  padding: 24px;
+	transition: .3s all ease;
+	transition-property: transform,visibility;
 	&.show{
-		top: calc(50% - 165px);
+		transform: translateY(0);
+		visibility: visible;
 	}
 	h2 {
 		padding-bottom: 16px;
 		font-size: 1.2em;
+		text-align: center;
 	}
 	#qrcode-pic{
 		margin: 0 auto;
-    	position: relative;
-    	display: block;
+    position: relative;
+    display: block;
+		canvas {
+			display: block;
+			margin: 0 auto;
+			padding-bottom: 6px;
+		}
 	}
 	#logo-qrcode{
-    	width: 50px;
-    	position: absolute;
-    	left: 129px;
-    	bottom: 119px;
-    	border-radius: 6px;
+    width: 50px;
+    position: absolute;
+    left: 129px;
+    bottom: 119px;
+    border-radius: 6px;
 	}
 	
+}
+
+.paper-white-pswp {
+	a.pswp__share--facebook{
+		&:hover {
+			background: share-facebook;
+			&:before {
+				border-bottom-color: #FFF;
+			}
+		}
+	}
+	a.pswp__share--weibo{
+		&:hover {
+			color: #FFF;
+			background: share-weibo;
+			&~a.pswp__share--facebook:before{
+				border-bottom-color: share-weibo;
+			}
+		}
+	}
+	a.pswp__share--qq{
+		&:hover {
+			color: #FFF;
+			background: share-qq;
+		}
+	}
+	a.pswp__share--wechat{
+		cursor: pointer;
+		&:hover {
+			color: #FFF;
+			background: share-wechat;
+		}
+	}
+	a.pswp__share--twitter{
+		&:hover {
+			background: share-twitter;
+		}
+	}
+	a.pswp__share--google{
+		&:hover {
+			color: #FFF;
+			background: share-google;
+		}
+	}
+	.pswp__share-tooltip a {
+	}
 }

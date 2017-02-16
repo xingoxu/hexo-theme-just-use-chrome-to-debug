@@ -20,6 +20,8 @@ subnav:
 
 rss: /atom.xml
 
+top_homepage: / #顶层主页，比如有主站等，将会应用在头像与姓名上 
+
 # Content
 excerpt_link: more
 fancybox: true
