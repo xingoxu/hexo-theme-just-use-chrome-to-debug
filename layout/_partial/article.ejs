@@ -59,10 +59,10 @@
   <% } %>
 </article>
 
-
-<section id="comments">
+<!-- 下次comment组件更新将id更新回 -->
+<section>
 <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
+<%- partial('post/new-comment', {
     key: post.slug,
     title: post.title,
     url: config.url+url_for(post.path)
