@@ -59,17 +59,18 @@
   <% } %>
 </article>
 
-<!-- 下次comment组件更新将id更新回 -->
-<section>
-<% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/new-comment', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
+<% if(!index) { %>
+  <section id="comments">
+  <% if (theme.duoshuo && post.comments){ %>
+    <%- partial('post/new-comment', {
+        key: post.slug,
+        title: post.title,
+        url: config.url+url_for(post.path)
+      }) %>
+    <% } %>
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<%- partial('post/disqus') %>
+    <% if (post.comments && config.disqus_shortname){ %>
+      <%- partial('post/disqus') %>
+    <% } %>
+  </section>
 <% } %>
-</section>

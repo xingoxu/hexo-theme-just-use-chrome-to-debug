@@ -1,7 +1,8 @@
 <div class="duoshuo">
-  <div id="comments" data-thread-key="<%= key %>" data-thread-url="<%= url %>" data-thread-title="<%= title %>"></div>
+  <div data-thread-key="<%= key %>" data-thread-url="<%= url %>" data-thread-title="<%= title %>"></div>
 	<!-- 评论框 end -->
 	<!-- 公共JS代码 start (一个网页只需插入一次) -->
-  <script type="text/javascript" src="https://od8634671.qnssl.com/comment.bf61219.js"></script>
+  <script type="text/javascript" src="https://od8634671.qnssl.com/comments.js?<%- Date.now() %>"></script>
+	<script type="text/javascript">comments(document.querySelectorAll('.duoshuo>div')[0])</script>
 	<!-- 公共JS代码 end -->
 </div>
