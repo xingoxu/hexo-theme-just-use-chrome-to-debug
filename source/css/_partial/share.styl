@@ -24,14 +24,14 @@ share-facebook = #3b5998
 			content: "";
 			position: absolute;
 			height: 4px;
-			left: 50%;
-			right: 50%;
+			left: 0;
+			width: 100%;
+			transform: scaleX(0);
 			bottom: 0;
 			transition: .2s all ease-in-out;
 		}
 		&:hover:after{
-				left: 0;
-				right: 0;
+			transform: scaleX(1);			
 		}
 	}
 	span.share-icon:before{
