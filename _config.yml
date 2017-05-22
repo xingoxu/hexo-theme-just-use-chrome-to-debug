@@ -25,7 +25,7 @@ top_homepage: / #顶层主页，比如有主站等，将会应用在头像与姓
 # Content
 excerpt_link: more
 fancybox: true
-mathjax: true
+mathjax: false
 
 # 是否开启动画效果
 animate: true
