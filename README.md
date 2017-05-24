@@ -30,8 +30,9 @@
 看到都会马上回复  
   
 如果你想体验手机浏览效果，可以扫一下二维码：  
-![xingoxu-qrcode](https://blog-xingoxu.duoshuo.com/api/qrcode/getImage.png?size=240&text=https://blog.xingoxu.com/)
-[图看不到点这里！](https://blog-xingoxu.duoshuo.com/api/qrcode/getImage.png?size=240&text=https://blog.xingoxu.com/)
+![xingoxu-qrcode](https://ooo.0o0.ooo/2017/05/24/59256942a4e3d.png)
+
+[图看不到点这里！](https://ooo.0o0.ooo/2017/05/24/59256942a4e3d.png)
 
 —————————————————————
 
