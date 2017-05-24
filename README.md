@@ -1,9 +1,9 @@
 # Paper White - A Hexo Theme
 ================
 
-[![](https://od8634671.qnssl.com/github/Paper-White/Showcase-Template-Flat-Presentation.png)](https://github.com/xingoxu/hexo-theme-paper-white/archive/master.zip)
+[![](https://ooo.0o0.ooo/2017/05/24/592563617f677.png)](https://github.com/xingoxu/hexo-theme-paper-white/archive/master.zip)
 
-[图看不到点这里~~~~(>_<)~~~~](https://od8634671.qnssl.com/github/Paper-White/Showcase-Template-Flat-Presentation.png)
+[图看不到点这里~~~~(>_<)~~~~](https://ooo.0o0.ooo/2017/05/24/592563617f677.png)
 
 # Intro
 
@@ -134,15 +134,15 @@ git pull
 
 ## PC
 
-![](https://dn-xingoxu.qbox.me/github/Paper-White/pc.png)
+![pc](https://ooo.0o0.ooo/2017/05/24/592562a3de4d4.png)
 
 ## Mobile
 
-![](https://dn-xingoxu.qbox.me/github/Paper-White/mobile.png)
+![mobile](https://ooo.0o0.ooo/2017/05/24/592568bcdb8a9.png)
 
 ## Pad
 
-![](https://dn-xingoxu.qbox.me/github/Paper-White/pad.png)
+![pad](https://ooo.0o0.ooo/2017/05/24/592563222672b.png)
 
 # 预告  
 
