@@ -92,8 +92,8 @@ require([], function() {
 					items.push({
 						src: src,
 						msrc: src,
-						w: this.width,
-						h: this.height,
+						w: this.naturalWidth || this.width,
+						h: this.naturalHeight || this.height,
 						title: title,
 						el: this,
 					});
