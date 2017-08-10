@@ -83,11 +83,36 @@ define([], function() {
 
 	};
 
+	// fetch bangumi rss inside
+	var bangumiRssClass = '.bangumi-rss-inside';
+	var bangumiInit = function () {
+		var bangumiRssSection = $(bangumiRssClass);
+		var url = bangumiRssSection.attr('data-url').trim();
+		$.get(url).done(function (data) {
+			console.log(data);
+			var innerHtml = data.entries.map(function (entry) {
+				return `
+					<li>
+						<div>${entry.content}</div>
+						<div class="time" title="${entry.time}">${entry.timeText}</div>
+					</li>
+				`
+			}).join('');
+			innerHtml += `<li><a href="${data.link}">更多 ${data.title} <i class="fa fa-external-link" aria-hidden="true"></i></a></li>`;
+			innerHtml = `<ul>${innerHtml}</ul>`;
+			bangumiRssSection.html(innerHtml);
+			bangumiRssSection.find('a').prop('target', '_blank');
+		});
+	}
+
 	return {
 		init: function() {
 			bind();
 			setColumn();
 			Tips.init();
+			if ($(bangumiRssClass).length > 0) {
+				bangumiInit();
+			}
 		},
 		slide: slide
 	};
