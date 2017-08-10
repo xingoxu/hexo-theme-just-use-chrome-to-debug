@@ -89,7 +89,6 @@ define([], function() {
 		var bangumiRssSection = $(bangumiRssClass);
 		var url = bangumiRssSection.attr('data-url').trim();
 		$.get(url).done(function (data) {
-			console.log(data);
 			var innerHtml = data.entries.map(function (entry) {
 				return `
 					<li>
