@@ -80,27 +80,39 @@ require([], function() {
 					items = [];
 			var pswpController;
 
-			$imgArr.click(function(){
+
+			$imgArr.click(function () {
+				var picWidth = this.naturalWidth || this.width, picHeight = this.naturalHeight || this.height;
+
+				var EMOJI_WIDTH_HEIGHT = 25;
+				if (picWidth <= EMOJI_WIDTH_HEIGHT && picHeight <= EMOJI_WIDTH_HEIGHT) // 阻止点击
+					return;
+
 				items = [];
 				var _this = this,
 						_index;
-				$imgArr.each(function(index){
+				$imgArr.each(function (index) {
 					var $img = $(this);
 					// var img = $img.getAttribute('data-idx', index);
-					var src = $img.attr('data-target') || $img.prop('src');
+					var srcUrl = $img.attr('data-target') || $img.prop('src');
 					var title = $img.attr('alt');
+					var picWidth = this.naturalWidth || this.width, picHeight = this.naturalHeight || this.height;
+
+					if (picWidth <= EMOJI_WIDTH_HEIGHT && picHeight <= EMOJI_WIDTH_HEIGHT) // 阻止插入
+						return;
+
 					items.push({
-						src: src,
-						msrc: src,
-						w: this.naturalWidth || this.width,
-						h: this.naturalHeight || this.height,
+						src: srcUrl,
+						msrc: srcUrl,
+						w: picWidth,
+						h: picHeight,
 						title: title,
 						el: this,
 					});
-					if(_this==this){
-						_index = index;
+					if (_this == this) {
+						_index = items.length - 1; // _index 为 item 在数组里的真实位置
 					}
-				})
+				});
 				photoSwipeOption.index = parseInt(_index);
 				pswpController = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, photoSwipeOption);
 
