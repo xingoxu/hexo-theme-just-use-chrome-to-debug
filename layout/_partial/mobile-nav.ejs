@@ -13,12 +13,12 @@
 			  <h1 class="header-author"><%=theme.author%></h1>
 			</hgroup>
 			<% if (theme.subtitle){ %>
-			<p class="header-subtitle"><%=theme.subtitle%></p>
+			<p class="header-subtitle"><%= Array.isArray(config.language) ? theme.subtitle[page.lang] : theme.subtitle %></p>
 			<%}%>
 			<nav class="header-menu">
 				<ul>
 				<% for (var i in theme.menu){ %>
-					<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+					<li><a href="<%- theme.menu[i].startsWith('http') ? theme.menu[i] : url_for_lang(theme.menu[i]) %>"><%= _p(i) %></a></li>
 		        <%}%>
 		        <div class="clearfix"></div>
 				</ul>

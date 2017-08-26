@@ -345,6 +345,16 @@ require([], function() {
 		});
 	}
 
+	$('.change-language').change(function (event) {
+		var locationArray = location.pathname.split('/').filter(string => string != '');
+		var lang = event.target.value;
+		if (paperWhiteConfig.languageList.includes(locationArray[0]))
+			locationArray.shift();
+		if (lang != paperWhiteConfig.languageList[0])
+			locationArray.unshift(lang);
+		location.href = '/' + locationArray.join('/');
+	});
+
 
 
 });

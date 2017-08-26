@@ -1,22 +1,29 @@
 <% if (post.prev || post.next){ %>
 <nav id="article-nav">
-  <% if (post.prev){ %>
-    <a href="<%- url_for(post.prev.path) %>" id="article-nav-newer" class="article-nav-link-wrap">
+  <% var prev_post = post %>
+  <% do { %>
+  <% prev_post = prev_post.prev %>
+  <% if (prev_post && prev_post.lang == page.lang){ %>
+    <a href="<%- url_for(prev_post.path) %>" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        <% if (post.prev.title){ %>
-          <%= post.prev.title %>
-        <% } else { %>
-          (no title)
-        <% } %>
-      </div>
+      <div class="article-nav-title"><%= prev_post.title || '(no title)' %></div>
     </a>
+    <% break %>
   <% } %>
-  <% if (post.next){ %>
-    <a href="<%- url_for(post.next.path) %>" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"><%= post.next.title %></div>
+  <% } while(prev_post) %>
+
+
+  <% var next_post = post %>
+  <% do { %>
+  <% next_post = next_post.next %>
+  <% if (next_post && next_post.lang == page.lang){ %>
+    <a href="<%- url_for(next_post.path) %>" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"><%= next_post.title || '(no title)' %></div>
       <strong class="article-nav-caption">></strong>
     </a>
+    <% break %>
   <% } %>
+  <% } while(next_post) %>
+
 </nav>
 <% } %>

@@ -1,0 +1,27 @@
+home: 主页
+archives: 所有文章
+profile: 关于我
+works: 作品
+navi: 导航
+catalog: 文章目录
+friends: 朋友们
+
+index_auto_load: 首页自动加载
+
+categories: 分类
+search: 搜索
+tags: 标签
+tweets: 推文
+prev: 上一页
+next: 下一页
+comment: 留言
+archive_a: 归档
+archive_b: 归档：%s
+page: 第 %d 页
+recent_posts: 最新文章
+newer: Newer
+older: Older
+share: Share
+rss_feed: RSS Feed
+category: Category
+tag: Tag
