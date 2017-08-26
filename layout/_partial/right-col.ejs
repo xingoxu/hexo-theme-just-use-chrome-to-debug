@@ -11,9 +11,9 @@
 			</a>
 
 			<hgroup>
-				<h1 class="header-author"><a href="/"><%=theme.author%></a></h1>
+				<h1 class="header-author"><a href="<%- url_for_lang('/') %>"><%=theme.author%></a></h1>
 				<% if (theme.subtitle){ %>
-					<p class="header-subtitle"><%=theme.subtitle%></p>
+					<p class="header-subtitle"><%= Array.isArray(config.language) ? theme.subtitle[page.lang] : theme.subtitle %></p>
 				<% } %>
 			</hgroup>
 			<div class="social">
@@ -72,18 +72,18 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>导航</li>
+						<li><%= _p('navi') %></li>
 						<% if (theme.tagcloud) { %>
 							<li>标签</li>
 						<% } %>
 						<% if (item.toc !== false && table) { %>
-							<li>文章目录</li>
+							<li><%= _p('catalog') %></li>
 						<% } %>
 						<%if (theme.friends && theme.friends.length != 0){ %>
-							<li>朋友们</li>
+							<li><%= _p('friends') %></li>
 						<% } %>
 						<% if(theme.aboutme){ %>
-							<li>关于我</li>
+							<li><%= _p('profile') %></li>
 						<% } %>
 						<% if (theme.bangumi_update_api){ %>
 							<li>Bangumi Updates</li>
@@ -99,15 +99,25 @@
 					<nav class="header-menu">
 						<ul>
 							<% for (var i in theme.menu){ %>
-								<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+								<li><a href="<%- theme.menu[i].startsWith('http') ? theme.menu[i] : url_for_lang(theme.menu[i]) %>"><%= _p(i) %></a></li>
 							<% } %>
 							<% if(!table) { %>
 								<li>
 									<div>
 										<label for="ajax-switch" class="ajax-checkbox">
-											<input class="access-hide" disabled id="ajax-switch" name="auto-load" type="checkbox" />开启首页自加载<span class="switch-toggle"></span>
+											<input class="access-hide" disabled id="ajax-switch" name="auto-load" type="checkbox" /><%= _p('index_auto_load') %><span class="switch-toggle"></span>
 										</label>
 									</div>
+								</li>
+							<% } %>
+							<% if(Array.isArray(config.language)) { %>
+								<li class="change-language">
+									<label> <i class="fa fa-globe" aria-hidden="true"></i> <%= site.data.languages[page.lang] %></label>
+									<select>
+										<% config.language.forEach(lang => { %>
+											<option value="<%= lang %>" <%= lang == page.lang ? 'selected' : '' %>><%= site.data.languages[lang] %></option>
+										<% }) %>
+									</select>
 								</li>
 							<% } %>
 							<li>

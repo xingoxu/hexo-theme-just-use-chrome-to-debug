@@ -49,6 +49,7 @@
 		isArchive: <%=is_archive()%>,
 		isTag: <%=is_tag()%>,
 		isCategory: <%=is_category()%>,
+		languageList: <%- JSON.stringify(config.language) %>,
 		canShare: <%= (theme.share && (page.share!==false) && !!page.title) %>,
 		open_in_new: <%=theme.open_in_new%>
 	}

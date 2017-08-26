@@ -1,10 +1,7 @@
 <% if (post.categories && post.categories.length){ %>
 	<div class="article-category tagcloud">
-	<%- list_categories(post.categories, {
-	  show_count: false,
-	  class: 'article-category',
-	  style: 'none',
-	  separator: ''
-	}) %>
+		<% [].slice.call(post.categories.data).forEach(category => { %>
+			<a href="<%- url_for_lang(category.path) %>" class="article-category-link"><%= category.name %></a>
+		<% }) %>
 	</div>
 <% } %>

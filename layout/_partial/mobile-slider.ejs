@@ -10,22 +10,22 @@
 				</div>
 			<% } %>
 			<div class="viewer-box-wrap">
-				<span class="viewer-title">导航</span>
+				<span class="viewer-title"><%= _p('navi') %></span>
 				<div class="viewer-div">
 					<% for (var i in theme.menu) { %>
-						<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+						<li><a href="<%- theme.menu[i].startsWith('http') ? theme.menu[i] : url_for_lang(theme.menu[i]) %>"><%= _p(i) %></a></li>
 					<% } %>
 				</div>
 			</div>
 			<% if (theme.aboutme) { %>
 				<div class="viewer-box-wrap">
-					<span class="viewer-title">关于我</span>
+					<span class="viewer-title"><%= _p('profile') %></span>
 					<div id="js-aboutme"><%= theme.aboutme %></div>
 				</div>
 			<%}%>
 			<% if (theme.friends && theme.friends.length != 0) { %>
 				<div class="viewer-box-wrap">
-					<span class="viewer-title">朋友们</span>
+					<span class="viewer-title"><%= _p('friends') %></span>
 					<div class="viewer-div friends" id="js-mobile-friends">
 						<% for (var i in theme.friends){ %>
 			         		<li><a target="_blank" class="main-navlink switch-friends-link" href="<%-url_for(theme.friends[i]) %>"><%= i %></a></li>
@@ -37,9 +37,21 @@
 				<div class="viewer-box-wrap">
 					<div class="viewer-title">
     					<label for="ajax-switch-mobile" class="ajax-checkbox">
-        							<input class="access-hide" disabled id="ajax-switch-mobile" name="auto-load" type="checkbox" />开启首页自加载<span class="switch-toggle"	></span>
+        							<input class="access-hide" disabled id="ajax-switch-mobile" name="auto-load" type="checkbox" /><%= _p('index_auto_load') %><span class="switch-toggle"	></span>
     					</label>
     				</div>
+				</div>
+			<% } %>
+			<% if(Array.isArray(config.language)) { %>
+				<div class="viewer-box-wrap">
+					<div class="viewer-title change-language">
+						<label> <i class="fa fa-globe" aria-hidden="true"></i> <%= site.data.languages[page.lang] %></label>
+						<select >
+							<% config.language.forEach(lang => { %>
+								<option value="<%= lang %>" <%= lang == page.lang ? 'selected' : '' %>><%= site.data.languages[lang] %></option>
+							<% }) %>
+						</select>
+					</div>
 				</div>
 			<% } %>
         </div>
