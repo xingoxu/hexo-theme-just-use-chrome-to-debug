@@ -2,7 +2,7 @@
 <body>
   <div id="container">
     <div class="mid-col">
-      <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
+      <%- partial('_partial/mobile-nav', null) %>
       <div class="body-wrap"><%- body %></div>
       <%- partial('_partial/footer') %>
     </div>
@@ -10,7 +10,7 @@
       <% if (page.layout=='post' || page.layout=='photo'){ %>
         <%- partial('_partial/right-col', {item: page, table: true}) %>
       <% } else { %>
-        <%- partial('_partial/right-col', {item: page, table: false}, {cache: !config.relative_link}) %>
+        <%- partial('_partial/right-col', {item: page, table: false}) %>
       <% } %>
     </div>
   </div>
