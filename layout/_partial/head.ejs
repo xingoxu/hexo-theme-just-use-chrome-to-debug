@@ -7,10 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="handheldfriendly" content="true">
   <meta name="theme-color" content="#325899">
+  <!-- Enforce HTTPS protocol -->
   <script>
-    if ((window.location.host == '<%= config.enforce_ssl %>') &&
+    if ((window.location.host == "<%= config.enforce_ssl %>") &&
         (window.location.protocol != "https:"))
         window.location.protocol = "https";
+  </script>
+<!-- If this is a backup, then redirect to origin -->
+<!-- 有生之年加上跳转提示 -->
+  <script>
+    var curLoc = window.location.href;
+    if ((<%= config.redirect2origin %>) &&
+        (curLoc.indexOf("bak.") <= 14) && (curLoc.indexOf("bak.") != -1))
+        setTimeout(function() {
+            redLoc = curLoc.replace("bak.", "");
+            window.location.replace(redLoc);
+        }, 10000);
   </script>
   <%
   var title = page.title;
