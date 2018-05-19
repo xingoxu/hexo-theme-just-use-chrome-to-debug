@@ -28,9 +28,27 @@
   } else if (is_tag()){
     title = 'Tag: ' + page.tag;
   }
+  %><%
+    var pageTitle = config.title;
+    if (title) {
+      pageTitle = `${title} | ${pageTitle}`;
+    }
+    if (page.current && page.current > 1) {
+      pageTitle += ` - ${_p('page', page.current)}`;
+    }
+    if (theme.subtitle) {
+      pageTitle += ` - ${theme.subtitle[page.lang]}`;
+    }
   %>
-  <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
-  <%- open_graph({twitter_id: theme.shareid.twitter, google_plus: theme.shareid.google_plus, fb_admins: theme.shareid.fb_admins, fb_app_id: theme.shareid.fb_app_id}) %>
+  <title><%= pageTitle %></title>
+  <%- open_graph({
+    title: pageTitle,
+    twitter_id: theme.shareid.twitter,
+    google_plus: theme.shareid.google_plus,
+    fb_admins: theme.shareid.fb_admins,
+    fb_app_id: theme.shareid.fb_app_id
+    })
+  %>
   <% if (theme.rss){ %>
     <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
   <% } %>
