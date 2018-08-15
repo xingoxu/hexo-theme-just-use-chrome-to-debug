@@ -42,7 +42,7 @@ google_analytics: ''
 favicon: /favicon.ico
 
 #你的头像url
-avatar:   #https://dn-xingoxu.qbox.me/author.jpg
+avatar:   #https://static.xingoxu.com/avatar.png
 #是否开启分享
 share: true
 shareid:
@@ -70,4 +70,4 @@ aboutme: false
 #开启——
 #aboutme: 奥巴马在用了这个主题之后不小心说出了自己的QQ号123456789
 # 头图
-titlepic:   #https://dn-xingoxu.qbox.me/blog_theme/banner_v1.png
+titlepic:   #https://static.xingoxu.com/blog_theme/banner_v1.png
